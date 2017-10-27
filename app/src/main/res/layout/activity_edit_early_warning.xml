@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="设置"
+            android:textColor="@color/colorTextTitle"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/ok"
@@ -23,6 +24,7 @@
             android:layout_gravity="end"
             android:text="完成"
             android:textSize="15sp"
-            android:layout_margin="15dp"/>
+            android:layout_margin="15dp"
+            android:textColor="@color/colorTexthighLight"/>
     </android.support.v7.widget.Toolbar>
 </LinearLayout>

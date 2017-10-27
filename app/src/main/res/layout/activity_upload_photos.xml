@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wxy.watertest10.View.UploadPhotosActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/uploadphoto_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="15sp"
+            android:textColor="@color/colorTexthighLight"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="投诉"
+            android:textColor="@color/colorTextTitle"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/uploadphoto_uploadAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布"
+            android:layout_gravity="right"
+            android:layout_margin="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorTextContent"/>
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/uploadphoto_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="4"
+            android:background="@color/colorPrimary"
+            android:hint="请输入您要投诉的细节..."
+            android:gravity="top|left" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:background="@color/colorPrimary">
+            <Button
+                android:id="@+id/upload_photo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/photo_add"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/river_icon"
+                android:layout_marginRight="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择河段" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="right"
+                android:src="@mipmap/right_arrow"
+                android:tint="@color/colorTextContent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

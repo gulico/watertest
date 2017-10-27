@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#68c6ba</color>
-    <color name="colorPrimaryDark">#67c6ba</color>
-    <color name="colorAccent">#1dbc9b</color>
-    <color name="windowBackground">#fffde7</color>
-    <color name="black_semi_transparent">#B2000000</color>
-    <color name="background">#e5e5e5</color>
-    <color name="half_black">#808080</color>
-    <color name="white">#fafafa</color>
-    <color name="white_pressed">#f1f1f1</color>
-    <color name="pink">#e91e63</color>
-    <color name="pink_pressed">#ec407a</color>
-    <color name="blue_semi_transparent">#805677fc</color>
-    <color name="blue_semi_transparent_pressed">#80738ffe</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#eaebeb</color>
+    <color name="windowBackground">#eaebeb</color>
+    <color name="colorTexthighLight">#0a89ff</color>
+    <color name="colorButtonHit">#0385ff</color>
+    <color name="colorTextTitle">#000000</color>
+    <color name="colorTextHit">#9b9b9b</color>
+    <color name="colorTextContent">#a9a9a9</color>
+    <color name="colorLine">#d5d5d5</color>
 </resources>

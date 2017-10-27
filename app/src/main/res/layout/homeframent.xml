@@ -56,11 +56,70 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:id="@+id/now_data"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                app:contentPadding="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="当前数据"
+                        android:textColor="@color/cardview_dark_background"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1sp"
+                        android:background="@color/colorLine"
+                        android:layout_margin="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/live_suggest"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                app:contentPadding="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="生活建议"
+                        android:textColor="@color/cardview_dark_background"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1sp"
+                        android:background="@color/colorLine"
+                        android:layout_margin="5dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
 
     </android.support.v4.widget.NestedScrollView>
 

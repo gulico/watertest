@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wxy.watertest10.View.SettingActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="设置"
+            android:textColor="@color/colorTextTitle"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/Setting_back"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_weight="0.02"
+            android:src="@mipmap/arrow_back"
+            android:tint="@color/colorTexthighLight" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除缓存数据"
+            android:textSize="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/logoff_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"/>
+        <TextView
+            android:id="@+id/log_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出当前账号"
+            android:textSize="20sp"/>
+        <ProgressBar
+            android:id="@+id/logoff_PB"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:visibility="invisible"/>
+    </LinearLayout>
+</LinearLayout>
