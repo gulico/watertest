@@ -1,8 +1,10 @@
 package com.example.wxy.watertest10.Model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.wxy.watertest10.Bean.MyApplication;
 import com.example.wxy.watertest10.Bean.UserBean;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.LoginActivity;
@@ -42,7 +44,8 @@ import java.util.List;
 public class LoginModel implements ILoginModel {
     public static final int SHOW_RESPONSE = 1;
     public String response = null;
-    private UserBean takeoutUserbean = null;
+    private UserBean takeoutUserbean = new UserBean("","");
+    String TAG = "LoginModel";
 
        /* if(!userBean.getUsername().equals("wxy")){
 
@@ -74,8 +77,9 @@ public class LoginModel implements ILoginModel {
             switch (msg.what) {
                 case SHOW_RESPONSE:
                     response = (String) msg.obj;
+                    Toast.makeText(MyApplication.getContext(), response, Toast.LENGTH_SHORT).show();
                     if(response.equals("true")){
-                        //SharedPreferences.Editor editor = activityContext.getSharedPreferences("User", Context.MODE_PRIVATE).edit();//MODE_PRIVATE本应用私有文件
+                        SharedPreferences.Editor editor = MyApplication.getContext().getSharedPreferences("User", Context.MODE_PRIVATE).edit();//MODE_PRIVATE本应用私有文件
                         /*
                         * getSharedPreferences是依赖于上下文环境的，也就是context，
                         * 所以不管你在哪个类中，一定要通过activity类的context才能调用。
@@ -83,9 +87,11 @@ public class LoginModel implements ILoginModel {
                         * 类型是context，然后在自定义类中记录下来，context.getSharedPreferences()就可以在你的类中这样调用了。
                         * PS:在activity的setContextView之后再实例化自己的类，这样activity.this才不是空。
                         * */
-                        //editor.putString("Username",takeoutUserbean.getUsername());
-                        //editor.putString("Userpassword",takeoutUserbean.getPassword());
-                        //editor.apply();
+                        editor.putString("Username",takeoutUserbean.getUsername());
+                        editor.putString("Userpassword",takeoutUserbean.getPassword());
+                        editor.apply();
+                      //  Activity currentActivity = MyApplication.getInstance().getCurrentActivity().finish();
+                        //MyApplication.getContext().this.fi();
                     }
                     else if(response.equals("false")){
 
@@ -98,29 +104,33 @@ public class LoginModel implements ILoginModel {
     };
 
     public void SendByHttpClient(final UserBean userBean) {
+        takeoutUserbean.setUsername(userBean.getUsername());
+        takeoutUserbean.setPassword(userBean.getPassword());
+       // Toast.makeText(MyApplication.getContext(),"i can do it",Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    HttpClient httpclient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost("http://192.168.204.169:8080/Login");
+                    HttpClient httpclient=new DefaultHttpClient();
+                    HttpPost httpPost=new HttpPost("http://192.168.212.60:8080/Login");
                     List<NameValuePair> params=new ArrayList<NameValuePair>();
                     params.add(new BasicNameValuePair("id",userBean.getUsername()));
                     params.add(new BasicNameValuePair("pw",userBean.getPassword()));
                     final UrlEncodedFormEntity entity=new UrlEncodedFormEntity(params,"utf-8");
                     httpPost.setEntity(entity);
-                    HttpResponse httpResponse = httpclient.execute(httpPost);
-                    takeoutUserbean.setUsername(userBean.getUsername());
-                    takeoutUserbean.setPassword(userBean.getPassword());
-                    if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                        HttpEntity entity1 = httpResponse.getEntity();
-                        String response = EntityUtils.toString(entity1, "utf-8");
-                        Message message = new Message();
-                        message.what = SHOW_RESPONSE;
-                        message.obj = response;
+                    HttpResponse httpResponse= httpclient.execute(httpPost);
+                    if(httpResponse.getStatusLine().getStatusCode()==200)
+                    {
+                        HttpEntity entity1=httpResponse.getEntity();
+                        String response=EntityUtils.toString(entity1, "utf-8");
+                        Message message=new Message();
+                        message.what=SHOW_RESPONSE;
+                        message.obj=response;
                         handler.sendMessage(message);
                     }
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
+                   // Toast.makeText(MyApplication.getContext(),"i can't do it",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
