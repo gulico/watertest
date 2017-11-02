@@ -50,25 +50,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     private void setUser(){//保存登录信息
         int ans;//-2用户名或密码为空，-1用户名不存在，0密码错误，1登陆成功
-        ans = iLoinpersenter.loginUser(LoginActivity.this);
-        if(ans==1){
-            finish();
-        }
-        else{
-            String tips = new String();
-            switch (ans){
-                case -2:
-                    tips = "用户名和密码不能为空";
-                    break;
-                case -1:
-                    tips = "用户名不存在";
-                    break;
-                case 0:
-                    tips = "密码错误";
-                    break;
-                default:
-            }
-            Toast.makeText(LoginActivity.this,tips,Toast.LENGTH_SHORT).show();
+        ans = iLoinpersenter.loginUser();
+        if(ans==-2) {
+            Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
         }
     }
 

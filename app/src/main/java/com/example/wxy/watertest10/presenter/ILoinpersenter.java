@@ -7,5 +7,5 @@ import android.content.Context;
  */
 
 public interface ILoinpersenter {
-    int loginUser(Context activityContext);
+    int loginUser();
 }
