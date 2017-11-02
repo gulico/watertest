@@ -9,5 +9,5 @@ import com.example.wxy.watertest10.Bean.UserBean;
  */
 
 public interface ILoginModel {
-    int loginUser(UserBean userBean,Context activityContext);
+    void SendByHttpClient(final UserBean userBean);
 }

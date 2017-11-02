@@ -18,12 +18,13 @@ public class Loginpresenter implements ILoinpersenter{
         this.iLoginActivity = iLoginActivity;//这边是接口实例
         iLoginModel = new LoginModel();//这边是new的一个Model实例赋值给接口……暂时不是很懂
     }
-    public int loginUser(Context activityContext){
+    public int loginUser(){
         if(iLoginActivity.getUserBean().getUsername()==null||iLoginActivity.getUserBean().getUsername().equals("")
                 ||iLoginActivity.getUserBean().getPassword()==null||iLoginActivity.getUserBean().getPassword()==("")){
             return -2;//用户名或者密码为空
         }else{
-            return iLoginModel.loginUser(iLoginActivity.getUserBean(),activityContext);
+            iLoginModel.SendByHttpClient(iLoginActivity.getUserBean());
+            return -3;//-3表示已经传入下层
         }
     }
 }

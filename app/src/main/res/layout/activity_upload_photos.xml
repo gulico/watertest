@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:weightSum="4"
             android:background="@color/colorPrimary">
-            <Button
+            <ImageView
                 android:id="@+id/upload_photo"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
