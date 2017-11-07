@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.Bean.UserBean;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.presenter.ILoinpersenter;
 import com.example.wxy.watertest10.presenter.Loginpresenter;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,ILoginActivity{
+public class LoginActivity extends BaseActivity implements View.OnClickListener,ILoginActivity{
 
     UserBean userBean = new UserBean(null,null);
     EditText UsernameView;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.addActivity(this);
         setContentView(R.layout.activity_login);
         ImageView back = (ImageView)findViewById(R.id.Login_back);
         back.setOnClickListener(this);
@@ -54,6 +57,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(ans==-2) {
             Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.finishActivity(this);
     }
 
     public UserBean getUserBean() {

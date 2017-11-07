@@ -28,9 +28,11 @@ import android.widget.TextView;
 import android.Manifest;
 import android.widget.Toast;
 
+import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 
-public class UploadPhotosActivity extends AppCompatActivity implements View.OnClickListener{
+public class UploadPhotosActivity extends BaseActivity implements View.OnClickListener{
 
     EditText upload_content;
     TextView uploadAll;
@@ -39,6 +41,7 @@ public class UploadPhotosActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.addActivity(this);
         setContentView(R.layout.activity_upload_photos);
         TextView back = (TextView)findViewById(R.id.uploadphoto_back);
         uploadAll = (TextView)findViewById(R.id.uploadphoto_uploadAll);
@@ -182,5 +185,10 @@ public class UploadPhotosActivity extends AppCompatActivity implements View.OnCl
         }else{
             Toast.makeText(this,"获取图片失败",Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.finishActivity(this);
     }
 }

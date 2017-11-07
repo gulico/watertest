@@ -13,13 +13,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener{
+public class SettingActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.addActivity(this);
         setContentView(R.layout.activity_setting);
         ImageView back = (ImageView)findViewById(R.id.Setting_back);
         back.setOnClickListener(this);
@@ -61,5 +64,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             default:
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.finishActivity(this);
     }
 }

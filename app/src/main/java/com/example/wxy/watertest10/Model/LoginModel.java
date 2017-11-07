@@ -5,6 +5,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.wxy.watertest10.Bean.AppManager;
 import com.example.wxy.watertest10.Bean.MyApplication;
 import com.example.wxy.watertest10.Bean.UserBean;
 
@@ -68,8 +69,6 @@ public class LoginModel extends AppCompatActivity implements ILoginModel {
     public void SendByHttpClient(final UserBean userBean) {
         takeoutUserbean.setUsername(userBean.getUsername());
         takeoutUserbean.setPassword(userBean.getPassword());
-        Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +userBean.getPassword());
-        Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +userBean.getUsername());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -90,12 +89,7 @@ public class LoginModel extends AppCompatActivity implements ILoginModel {
                         message.what=SHOW_RESPONSE;
                         message.obj=response;
                         handler.sendMessage(message);
-                    }/*
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder()
-                            .url("http://120.55.47.216:8060/ideaWater02/UserController/login.do")
-                            .build();
-                    Response response = client.newCall(request).execute();*/
+                    }
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -113,11 +107,6 @@ public class LoginModel extends AppCompatActivity implements ILoginModel {
                 String pw = jsonObject.getString("isHaveRight");
                 String ok = jsonObject.getString("isSucced");
                 String msg = jsonObject.getString("msg");
-              //String version = jsonObject.getString("version");
-                Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +id);
-                Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +pw);
-                Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +ok);
-                Log.d("yeyeyyeye", "parseJSONWithJSONObject: " +msg);
                 Toast.makeText(MyApplication.getContext(),msg,Toast.LENGTH_SHORT).show();
                 if(msg.equals("登录成功")){
                     SharedPreferences.Editor editor = MyApplication.getContext().getSharedPreferences("User", Context.MODE_PRIVATE).edit();//MODE_PRIVATE本应用私有文件
@@ -131,7 +120,7 @@ public class LoginModel extends AppCompatActivity implements ILoginModel {
                     editor.putString("Username",takeoutUserbean.getUsername());
                     editor.putString("Userpassword",takeoutUserbean.getPassword());
                     editor.apply();
-
+                    AppManager.finishCurrentActivity();//结束当前活动
                 }
             }
         } catch (JSONException e) {

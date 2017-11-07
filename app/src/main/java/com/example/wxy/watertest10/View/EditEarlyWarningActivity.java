@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 
-public class EditEarlyWarningActivity extends AppCompatActivity {
+public class EditEarlyWarningActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.addActivity(this);
         setContentView(R.layout.activity_edit_early_warning);
         Toast.makeText(EditEarlyWarningActivity.this,"这里是修改阈值界面",Toast.LENGTH_SHORT).show();
         ActionBar actionBar = getSupportActionBar();
@@ -31,5 +34,10 @@ public class EditEarlyWarningActivity extends AppCompatActivity {
             default:
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.finishActivity(this);
     }
 }

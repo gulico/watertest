@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.Frament.HomeFragment;
 import com.example.wxy.watertest10.View.Frament.MapFragment;
@@ -22,7 +24,7 @@ import com.example.wxy.watertest10.View.Frament.MoreFragment;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     ImageView home_btn;
     ImageView map_btn;
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        AppManager.addActivity(this);
         /*-------------------------底部导航栏----------------------------*/
         home_btn = (ImageView)findViewById(R.id.home_button);
         home_btn.setOnClickListener(this);
@@ -137,5 +139,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.Top_fragment,fragment);
         transaction.commit();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.finishActivity(this);
     }
 }
