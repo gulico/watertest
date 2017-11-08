@@ -26,7 +26,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.addActivity(this);
         setContentView(R.layout.activity_login);
         ImageView back = (ImageView)findViewById(R.id.Login_back);
         back.setOnClickListener(this);
@@ -57,12 +56,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         if(ans==-2) {
             Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppManager.finishActivity(this);
     }
 
     public UserBean getUserBean() {

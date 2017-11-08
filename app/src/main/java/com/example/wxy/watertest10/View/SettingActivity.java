@@ -22,7 +22,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.addActivity(this);
         setContentView(R.layout.activity_setting);
         ImageView back = (ImageView)findViewById(R.id.Setting_back);
         back.setOnClickListener(this);
@@ -64,10 +63,5 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 break;
             default:
         }
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppManager.finishActivity(this);
     }
 }

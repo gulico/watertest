@@ -40,7 +40,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppManager.addActivity(this);
         /*-------------------------底部导航栏----------------------------*/
         home_btn = (ImageView)findViewById(R.id.home_button);
         home_btn.setOnClickListener(this);
@@ -134,15 +133,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
     }
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.Top_fragment,fragment);
+        transaction.replace(R.id.Top_fragment, fragment);
         transaction.commit();
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppManager.finishActivity(this);
     }
 }

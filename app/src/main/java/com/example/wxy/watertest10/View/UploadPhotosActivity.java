@@ -41,7 +41,6 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppManager.addActivity(this);
         setContentView(R.layout.activity_upload_photos);
         TextView back = (TextView)findViewById(R.id.uploadphoto_back);
         uploadAll = (TextView)findViewById(R.id.uploadphoto_uploadAll);
@@ -185,10 +184,5 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
         }else{
             Toast.makeText(this,"获取图片失败",Toast.LENGTH_SHORT).show();
         }
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AppManager.finishActivity(this);
     }
 }
