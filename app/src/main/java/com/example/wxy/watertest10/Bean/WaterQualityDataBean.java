@@ -47,4 +47,40 @@ public class WaterQualityDataBean {
     public double getDissolved_oxygen(){return dissolved_oxygen;}
     public double getNtu(){return ntu;}
     public double getP(){return p;}
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public void setTime(Date time) {
+        Time = time;
+    }
+
+    public void setPh(double ph) {
+        this.ph = ph;
+    }
+
+    public void setConductivity(double conductivity) {
+        this.conductivity = conductivity;
+    }
+
+    public void setWater_temperature(double water_temperature) {
+        this.water_temperature = water_temperature;
+    }
+
+    public void setAmmonia_nitrogen(double ammonia_nitrogen) {
+        this.ammonia_nitrogen = ammonia_nitrogen;
+    }
+
+    public void setDissolved_oxygen(double dissolved_oxygen) {
+        this.dissolved_oxygen = dissolved_oxygen;
+    }
+
+    public void setNtu(double ntu) {
+        this.ntu = ntu;
+    }
+
+    public void setP(double p) {
+        this.p = p;
+    }
 }

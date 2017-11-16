@@ -43,8 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="清除缓存数据"
-            android:textSize="20sp"/>
+            android:text="清除缓存数据" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/logoff_Layout"
@@ -62,8 +61,7 @@
             android:id="@+id/log_off"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="退出当前账号"
-            android:textSize="20sp"/>
+            android:text="退出当前账号"/>
         <ProgressBar
             android:id="@+id/logoff_PB"
             android:layout_width="20dp"

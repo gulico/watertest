@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ import com.example.wxy.watertest10.R;
 
 public class UploadPhotosActivity extends BaseActivity implements View.OnClickListener{
 
+    private String TAG = "UploadPhotosActivity";
     EditText upload_content;
     TextView uploadAll;
     ImageView upload_photo;
@@ -100,12 +102,12 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
     private void openAlbum(){
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.setType("image/*");
-        startActivityForResult(intent,CHOOSE_PHOTO);
+        startActivityForResult(intent,CHOOSE_PHOTO);//打开相册
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
             case 1:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
@@ -120,10 +122,10 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        //super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode){
             case CHOOSE_PHOTO:
-                if(requestCode==RESULT_OK){
+                if(resultCode==RESULT_OK){//判断手机版本号
                     if(Build.VERSION.SDK_INT >=19){
                         //4.4以上系统使用该方法处理图片
                         handleImageOnKitKat(data);
@@ -159,7 +161,6 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
         }
         displayImage(imagePath);
     }
-
     private void handleImageBeforeKitKat(Intent data){//版本4.4以下
         Uri uri = data.getData();
         String imagePath = getImagePath(uri,null);

@@ -3,9 +3,10 @@ package com.example.wxy.watertest10.View;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 
-public class ShowDetailActivity extends AppCompatActivity {
+public class ShowDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
