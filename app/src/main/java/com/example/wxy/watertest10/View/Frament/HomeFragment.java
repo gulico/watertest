@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment implements IMainActivity{
         iMainUiPersenter = new MainUiPresenter(this);
         _dissolved_oxygenPie = (PieChart) view.findViewById(R.id.dissolved_oxygenPie);
         loadData();
-        DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
+       // DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
         //initRecycler();
         //RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         //GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
@@ -59,13 +59,13 @@ public class HomeFragment extends Fragment implements IMainActivity{
         iMainUiPersenter.loadDate();
     }
     public String getPrefix(){//让p层获取默认地区的检测数据
-        return "临安";
+        return "D01";
     }
     public void setBean(WaterQualityDataBean waterQualityDataBean){//本层获取数据
         this.waterQualityDataBean = waterQualityDataBean;
     }
     private void initRecycler(){
-        simpleQualityBeanList.clear();
+     /*   simpleQualityBeanList.clear();
         SimpleQualityBean bean1 = new SimpleQualityBean("酸碱度","pH",waterQualityDataBean.getPh());
         simpleQualityBeanList.add(bean1);
         SimpleQualityBean bean2 = new SimpleQualityBean("导电性","Conductivity",waterQualityDataBean.getConductivity());
@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment implements IMainActivity{
         simpleQualityBeanList.add(bean6);
         SimpleQualityBean bean7 = new SimpleQualityBean("磷","P",waterQualityDataBean.getP());
         simpleQualityBeanList.add(bean7);
+        */
     }
     private void DrawPieCharts(float a){//画饼图
         ArrayList<PieEntry> pieEntryList = new ArrayList<PieEntry>();
