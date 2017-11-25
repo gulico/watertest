@@ -37,22 +37,11 @@ public class WaterQualityService extends Service {
         Log.d("yxd", "onStartCommand: " + "服务可以执行");
         sendRequestWithOkHttp();
        // List<WaterQualityDataBean> Waters = DataSupport.findAll(WaterQualityDataBean.class);
-       WaterQualityDataBean water = null;
-        List<WaterQualityDataBean> waters= DataSupport.findAll(WaterQualityDataBean.class);
-for(WaterQualityDataBean waterl:waters) {
-    Log.d("xiaotiancai", "Time: " + waterl.getTime());
-    Log.d("xiaotiancai", "nitrogen: " + waterl.getAmmonia_nitrogen());
-    Log.d("xiaotiancai", "Conductivity: " + waterl.getConductivity());
-    Log.d("xiaotiancai", "Ntu: " + waterl.getNtu());
-    Log.d("xiaotiancai", "P: " + waterl.getP());
-    Log.d("xiaotiancai", "oxygen: " + waterl.getDissolved_oxygen());
-    Log.d("xiaotiancai", "temperature: " + waterl.getWater_temperature());
-    Log.d("xiaotiancai", "Ph: " + waterl.getPh());
-}
+        //String dateTime = "2017-04-21 02:24:25.0";
 
-        //for (WaterQualityDataBean Water: Waters){
-         //   Log.d("wxy", "onStartCommand: " + Water.getTime());
-        //}
+
+//        List<WaterQualityDataBean> waters= DataSupport.select("Time").find(WaterQualityDataBean.class);
+
         return super.onStartCommand(intent,flags,startId);
     }
 
@@ -91,25 +80,45 @@ for(WaterQualityDataBean waterl:waters) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String dateTime = jsonObject.getString("dateTime");//测试时间
                 String instrumentId = jsonObject.getString("instrumentId");//测式机型号
+                double instrumentID = Double.parseDouble(instrumentId);
                 String ph = jsonObject.getString("ph");//ph
+                double PH = Double.parseDouble(ph);
                 String dissolvedOxygen = jsonObject.getString("dissolvedOxygen");//含氧
+                double DissolvedOxygen = Double.parseDouble(dissolvedOxygen);
                 String ammoniaNitrogen = jsonObject.getString("ammoniaNitrogen");//氨氮
+                double AmmoniaNitrogen = Double.parseDouble(ammoniaNitrogen);
                 String conductivity = jsonObject.getString("conductivity");//传导率
+                double Conductivity = Double.parseDouble(conductivity);
                 String ntu = jsonObject.getString("ntu");//浊度
+                double Ntu = Double.parseDouble(ntu);
                 String p = jsonObject.getString("p");//磷
+                double P = Double.parseDouble(p);
                 String waterTemperature = jsonObject.getString("waterTemperature");//水温
+                double WaterTemperature = Double.parseDouble(waterTemperature);
               //  Log.d("yxd", "parseJSONWithJSONObject: " + dateTime);
                if(instrumentId.equals("D01")){
                     //if(dateTime!=jsonArray.getJSONObject(i-1).getString("dateTime")) {
                         WaterQualityDataBean water = new WaterQualityDataBean();
-                        water.setTime(dateTime);
-                        water.setPh(ph);
-                        water.setDissolved_oxygen(dissolvedOxygen);
-                        water.setNtu(ntu);
-                        water.setAmmonia_nitrogen(ammoniaNitrogen);
-                        water.setConductivity(conductivity);
-                        water.setP(p);
-                        water.setWater_temperature(waterTemperature);
+                   //          2017-04-19 22:38:19.0
+                   String []test1=dateTime.split(" ");
+                    //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
+                   // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
+                   // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                   String []test2=test1[1].split(":");
+
+                   double hour = Double.parseDouble(test2[0]);
+                   double minuteSix = Double.parseDouble(test2[1]);
+                    double minuteTen = minuteSix / 100 * 60;
+                        water.setHour(hour);
+                        water.setMinute(minuteTen);
+                        water.setTime(test1[0]);
+                        water.setPh(PH);
+                        water.setDissolved_oxygen(DissolvedOxygen);
+                        water.setNtu(Ntu);
+                        water.setAmmonia_nitrogen(AmmoniaNitrogen);
+                        water.setConductivity(Conductivity);
+                        water.setP(P);
+                        water.setWater_temperature(WaterTemperature);
                         water.save();
                    // }
                 }

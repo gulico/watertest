@@ -11,67 +11,95 @@ import java.util.Date;
  * (1)首先我们需要一个UserBean，用来保存单次监测的信息
  */
 public class WaterQualityDataBean extends DataSupport {
+
     private String City;
     private String Time;//测试时间
-    private String ph;//ph值
-    private String conductivity;//导电性
-    private String water_temperature;//水温
-    private String ammonia_nitrogen;//氨态氮
-    private String dissolved_oxygen;//溶解氧含量
-    private String ntu;//浊度
-    private String p;//磷
+    private double ph;//ph值
+    private double conductivity;//导电性
+    private double water_temperature;//水温
+    private double ammonia_nitrogen;//氨态氮
+    private double dissolved_oxygen;//溶解氧含量
+    private double ntu;//浊度
+    private double p;//磷
+    private double minute;
+    private double hour;
+
+    public void setHour(double hour) {
+        this.hour = hour;
+    }
+
+    public double getHour() {
+        return hour;
+    }
+
+    public double getMinute() {
+        return minute;
+    }
+
+    public void setMinute(double minute) {
+        this.minute = minute;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public String getCity() {
+        return City;
+    }
+    //private double
 
 
-    public String getCity(){ return City; }
+
     public String getTime(){
         return Time;
     }
-    public String getPh(){
+    public double getPh(){
         return ph;
     }
-    public String getConductivity(){return conductivity;}
-    public String getWater_temperature(){
+    public double getConductivity(){return conductivity;}
+    public double getWater_temperature(){
         return water_temperature;
     }
-    public String getAmmonia_nitrogen(){return ammonia_nitrogen;}
-    public String getDissolved_oxygen(){return dissolved_oxygen;}
-    public String getNtu(){return ntu;}
-    public String getP(){return p;}
+    public double getAmmonia_nitrogen(){return ammonia_nitrogen;}
+    public double getDissolved_oxygen(){return dissolved_oxygen;}
+    public double getNtu(){return ntu;}
+    public double getP(){return p;}
 
-    public void setCity(String city) {
-         City = city;
-    }
 
-    public void setTime(String time) {
-        Time = time;
-    }
 
-    public void setPh(String ph) {
+
+
+    public void setPh(double ph) {
         this.ph = ph;
     }
 
-    public void setConductivity(String conductivity) {
+    public void setConductivity(double conductivity) {
         this.conductivity = conductivity;
     }
 
-    public void setWater_temperature(String water_temperature) {
+    public void setWater_temperature(double water_temperature) {
         this.water_temperature = water_temperature;
     }
 
-    public void setAmmonia_nitrogen(String ammonia_nitrogen) {
+    public void setAmmonia_nitrogen(double ammonia_nitrogen) {
         this.ammonia_nitrogen = ammonia_nitrogen;
     }
 
-    public void setDissolved_oxygen(String dissolved_oxygen) {
+    public void setDissolved_oxygen(double dissolved_oxygen) {
         this.dissolved_oxygen = dissolved_oxygen;
     }
 
-    public void setNtu(String ntu) {
+    public void setNtu(double ntu) {
         this.ntu = ntu;
     }
 
-    public void setP(String p) {
+    public void setP(double p) {
         this.p = p;
     }
 
+
+    public void setTime(String time) {
+        this.Time = time;
+    }
 }
