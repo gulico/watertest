@@ -17,10 +17,13 @@ import android.widget.TextView;
 
 import com.example.wxy.watertest10.Bean.AppManager;
 import com.example.wxy.watertest10.Bean.BaseActivity;
+import com.example.wxy.watertest10.Model.WaterQualityService;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.Frament.HomeFragment;
 import com.example.wxy.watertest10.View.Frament.MapFragment;
 import com.example.wxy.watertest10.View.Frament.MoreFragment;
+
+import org.litepal.LitePal;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,6 +43,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*----------------------------服务--------------------------------*/
+        Intent startIntent = new Intent(this,WaterQualityService.class);
+        startService(startIntent);
+        /*-------------------------创建数据库-----------------------------*/
+        LitePal.getDatabase();
         /*-------------------------底部导航栏----------------------------*/
         home_btn = (ImageView)findViewById(R.id.home_button);
         home_btn.setOnClickListener(this);
@@ -139,4 +147,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         transaction.replace(R.id.Top_fragment, fragment);
         transaction.commit();
     }
+
 }

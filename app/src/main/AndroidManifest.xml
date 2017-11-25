@@ -12,8 +12,9 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:name="com.example.wxy.watertest10.Bean.MyApplication"
+        android:name=".Bean.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -44,7 +45,12 @@
         <activity android:name=".View.AboutUsActivity" />
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.UploadPhotosActivity" />
-        <activity android:name=".View.SettingActivity"></activity>
+        <activity android:name=".View.SettingActivity" />
+
+        <service
+            android:name=".Model.WaterQualityService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

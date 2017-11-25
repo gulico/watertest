@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="WaterQualityDataBean"></dbname>
+    <version value="2" ></version>
+    <list>
+          <mapping class="com.example.wxy.watertest10.Bean.WaterQualityDataBean"> </mapping>
+    </list>
+</litepal>
