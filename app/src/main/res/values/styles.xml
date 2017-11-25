@@ -10,7 +10,6 @@
     </style>
     <style name="MainActivityTheme" parent="AppTheme">
     </style>
-
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!--边框-->
