@@ -10,4 +10,6 @@
     <color name="colorTextHit">#9b9b9b</color>
     <color name="colorTextContent">#a9a9a9</color>
     <color name="colorLine">#d5d5d5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

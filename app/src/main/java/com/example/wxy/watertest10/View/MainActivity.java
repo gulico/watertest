@@ -9,19 +9,17 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.wxy.watertest10.Bean.AppManager;
 import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.Model.WaterQualityService;
 import com.example.wxy.watertest10.R;
-import com.example.wxy.watertest10.View.Frament.HomeFragment;
-import com.example.wxy.watertest10.View.Frament.MapFragment;
-import com.example.wxy.watertest10.View.Frament.MoreFragment;
+import com.example.wxy.watertest10.View.MainActivityFrament.HomeFragment;
+import com.example.wxy.watertest10.View.MainActivityFrament.MapFragment;
+import com.example.wxy.watertest10.View.MainActivityFrament.MoreFragment;
 
 import org.litepal.LitePal;
 

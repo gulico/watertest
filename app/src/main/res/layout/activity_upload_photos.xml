@@ -65,6 +65,7 @@
                 />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/choose_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -77,13 +78,14 @@
                 android:src="@mipmap/river_icon"
                 android:layout_marginRight="10dp"/>
             <TextView
+                android:id="@+id/place_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="请选择河段" />
+                android:text="请选择监测点" />
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:gravity="right"
+                android:layout_gravity="right"
                 android:src="@mipmap/right_arrow"
                 android:tint="@color/colorTextContent"/>
         </LinearLayout>

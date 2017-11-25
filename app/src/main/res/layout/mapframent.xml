@@ -14,16 +14,12 @@
         android:fitsSystemWindows="true">
     </com.baidu.mapapi.map.MapView>
     <android.widget.SearchView
+        android:id="@+id/Search_Data"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:iconifiedByDefault="false"
         android:queryHint="请输入监测点名称">
     </android.widget.SearchView>
-    <Button
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="search"/>
 
 </android.support.design.widget.CoordinatorLayout>

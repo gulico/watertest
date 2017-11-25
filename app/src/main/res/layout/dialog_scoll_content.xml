@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <cn.forward.androids.views.StringScrollPicker
+        android:id="@+id/Stringcontent"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        app:spv_start_color="@color/colorTexthighLight"
+        app:spv_max_text_size="18sp">
+
+    </cn.forward.androids.views.StringScrollPicker>
+</LinearLayout>
