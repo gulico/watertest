@@ -141,6 +141,7 @@ public class WaterQualityService extends Service {
                 }
 
 
+
                 if (test1Check[0].equals(test1[0]) && flag == 0 && ( Ten-minuteSix) >= 10) {
                     flag = 1;
                     Log.d("sasasg", "parseJSONWithJSONObject: " + (Ten-minuteSix )+"Ten : "+ Ten + "minSix : "+minuteSix);
