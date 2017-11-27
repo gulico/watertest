@@ -36,9 +36,11 @@ public class WaterQualityService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         Log.d("yxd", "onStartCommand: " + "服务可以执行");
         sendRequestWithOkHttp();
-       // List<WaterQualityDataBean> Waters = DataSupport.findAll(WaterQualityDataBean.class);
+        List<WaterQualityDataBean> Waters = DataSupport.findAll(WaterQualityDataBean.class);
         //String dateTime = "2017-04-21 02:24:25.0";
-
+     //   for(WaterQualityDataBean Water:Waters){
+       //     Log.d("xudi", "onStartCommand: "+Water.getMinute());
+        //}
 
 //        List<WaterQualityDataBean> waters= DataSupport.select("Time").find(WaterQualityDataBean.class);
 
@@ -48,6 +50,7 @@ public class WaterQualityService extends Service {
     @Override
     public void onDestroy(){
         super.onDestroy();
+        DataSupport.deleteAll(WaterQualityDataBean.class);
     }
 
     private void sendRequestWithOkHttp(){
@@ -75,12 +78,17 @@ public class WaterQualityService extends Service {
 
            //
             JSONArray jsonArray = new JSONArray(jsonData);
+            double Ten = -10;
+            int flag = 1;
+            for(int i = 0; i < jsonArray.length(); i++) {
 
-            for(int i = 0; i < jsonArray.length(); i++){
+
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String dateTime = jsonObject.getString("dateTime");//测试时间
                 String instrumentId = jsonObject.getString("instrumentId");//测式机型号
-                double instrumentID = Double.parseDouble(instrumentId);
+                if (instrumentId.equals("D01")) {
+
+                //   double instrumentID = Double.parseDouble(instrumentId);
                 String ph = jsonObject.getString("ph");//ph
                 double PH = Double.parseDouble(ph);
                 String dissolvedOxygen = jsonObject.getString("dissolvedOxygen");//含氧
@@ -97,48 +105,76 @@ public class WaterQualityService extends Service {
                 double WaterTemperature = Double.parseDouble(waterTemperature);
 
 
-                String []test1=dateTime.split(" ");
-                //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
+                String[] test1 = dateTime.split(" ");
+                //  Log.d("sdsa", "parseJSONWithJSONObject: "+test1[0]);
                 // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
                 // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
-                String []test2=test1[1].split(":");
+                String[] test2 = test1[1].split(":");
+                //  Log.d("sdsa", "parseJSONWithJSONObject: "+test2[1]);
+                //  Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                double hour = Double.parseDouble(test2[0]);//小时
+                double minuteSix = Double.parseDouble(test2[1]);//分钟
 
-                double hour = Double.parseDouble(test2[0]);
-                double minuteSix = Double.parseDouble(test2[1]);
-                double minuteTen = minuteSix / 100 * 60;
+                double minuteTen = minuteSix / 60 * 1000;
 
-                JSONObject jsonObjectCheck = jsonArray.getJSONObject(i - 1);
-                String dateTimeCheck = jsonObject.getString("dateTime");
-                String []test1Check=dateTimeCheck.split(" ");
-                //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
-                // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
-                // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
-                String []test2Check=test1[1].split(":");
+                if (flag == 1 && i != 0) {
+                    Ten = minuteSix;
+                    flag = 0;
+                }
 
-                double hourCheck = Double.parseDouble(test2Check[0]);
-                double minuteSixCheck = Double.parseDouble(test2Check[1]);
-                double minuteTenCheck = minuteSix / 100 * 60;
+                double minuteTenCheck = 0;
+                double minuteSixCheck = 0;
+                    JSONObject jsonObjectCheck = jsonArray.getJSONObject(i - 1);
+                    String dateTimeCheck = jsonObjectCheck.getString("dateTime");
+                    String[] test1Check = dateTimeCheck.split(" ");
+                if(i >= 1) {
 
-              //  Log.d("yxd", "parseJSONWithJSONObject: " + dateTime);
-               if(instrumentId.equals("D01") && minuteTen != minuteTenCheck){
+                    //Log.d("sdsa", "parseJSONWithJSONObject: "+test1Check[0]);
+                    // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
+                    // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                    String[] test2Check = test1Check[1].split(":");
+                   // Log.d("sdsa", "parseJSONWithJSONObject: " + test1Check[1]);
+                    //  Log.d("xudongwudi", "onStartCommand: "+test2Check[1]);
+                    double hourCheck = Double.parseDouble(test2Check[0]);
+                    minuteSixCheck = Double.parseDouble(test2Check[1]);
+                     minuteTenCheck = minuteSixCheck / 100 * 60;
+                }
+
+
+                if (test1Check[0].equals(test1[0]) && flag == 0 && ( Ten-minuteSix) >= 10) {
+                    flag = 1;
+                    Log.d("sasasg", "parseJSONWithJSONObject: " + (Ten-minuteSix )+"Ten : "+ Ten + "minSix : "+minuteSix);
+
+                    Ten = minuteSix;
+
+                } else if(!test1Check[0].equals(test1[0]) || minuteSix >= minuteSixCheck)
+                {
+                    Ten = minuteSix;
+                }
+                else
+                    continue;
+                //  Log.d("yxd", "parseJSONWithJSONObject: " + dateTime);
+                if (instrumentId.equals("D01") && flag == 1) {
                     //if(dateTime!=jsonArray.getJSONObject(i-1).getString("dateTime")) {
-                        WaterQualityDataBean water = new WaterQualityDataBean();
-                   //          2017-04-19 22:38:19.0
-
-                        water.setHour(hour);
-                        water.setMinute(minuteTen);
-                        water.setTime(test1[0]);
-                        water.setPh(PH);
-                        water.setDissolved_oxygen(DissolvedOxygen);
-                        water.setNtu(Ntu);
-                        water.setAmmonia_nitrogen(AmmoniaNitrogen);
-                        water.setConductivity(Conductivity);
-                        water.setP(P);
-                        water.setWater_temperature(WaterTemperature);
-                        water.save();
-                   // }
+                    WaterQualityDataBean water = new WaterQualityDataBean();
+                    //          2017-04-19 22:38:19.0
+                    water.setCity(instrumentId);
+                    water.setHour(hour);
+                    water.setMinute(minuteTen);
+                    water.setTime(test1[0]);
+                    water.setPh(PH);
+                    water.setDissolved_oxygen(DissolvedOxygen);
+                    water.setNtu(Ntu);
+                    water.setAmmonia_nitrogen(AmmoniaNitrogen);
+                    water.setConductivity(Conductivity);
+                    water.setP(P);
+                    water.setWater_temperature(WaterTemperature);
+                    water.save();
+                    // }
                 }
             }
+            }
+
 
 
         }catch (Exception e){
