@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*----------------------------服务--------------------------------*/
-        Intent startIntent = new Intent(this,WaterQualityService.class);
+       Intent startIntent = new Intent(this,WaterQualityService.class);
         startService(startIntent);
         /*-------------------------创建数据库-----------------------------*/
         LitePal.getDatabase();

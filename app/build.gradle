@@ -30,6 +30,7 @@ dependencies {
     //annotationProcessor 'com.github.bumptech.glide:compiler:3.7.0'
     //可视化图表
     //floatactionbutton
+    //滚动器
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
@@ -42,5 +43,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'org.litepal.android:core:1.4.1'
     compile 'com.android.support:support-v4:26.+'
-    compile 'com.forward.androids:androids:1.1.7'//滚动器
+    compile 'com.forward.androids:androids:1.1.7'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
 }
