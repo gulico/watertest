@@ -46,6 +46,8 @@
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.UploadPhotosActivity" />
         <activity android:name=".View.SettingActivity" />
+        <activity android:name=".View.Sign_Activity"/>
+        <activity android:name=".View.SignView"/>
 
         <service
             android:name=".Model.WaterQualityService"

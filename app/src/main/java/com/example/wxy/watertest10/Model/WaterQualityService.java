@@ -95,20 +95,36 @@ public class WaterQualityService extends Service {
                 double P = Double.parseDouble(p);
                 String waterTemperature = jsonObject.getString("waterTemperature");//水温
                 double WaterTemperature = Double.parseDouble(waterTemperature);
+
+
+                String []test1=dateTime.split(" ");
+                //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
+                // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
+                // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                String []test2=test1[1].split(":");
+
+                double hour = Double.parseDouble(test2[0]);
+                double minuteSix = Double.parseDouble(test2[1]);
+                double minuteTen = minuteSix / 100 * 60;
+
+                JSONObject jsonObjectCheck = jsonArray.getJSONObject(i - 1);
+                String dateTimeCheck = jsonObject.getString("dateTime");
+                String []test1Check=dateTimeCheck.split(" ");
+                //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
+                // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
+                // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                String []test2Check=test1[1].split(":");
+
+                double hourCheck = Double.parseDouble(test2Check[0]);
+                double minuteSixCheck = Double.parseDouble(test2Check[1]);
+                double minuteTenCheck = minuteSix / 100 * 60;
+
               //  Log.d("yxd", "parseJSONWithJSONObject: " + dateTime);
-               if(instrumentId.equals("D01")){
+               if(instrumentId.equals("D01") && minuteTen != minuteTenCheck){
                     //if(dateTime!=jsonArray.getJSONObject(i-1).getString("dateTime")) {
                         WaterQualityDataBean water = new WaterQualityDataBean();
                    //          2017-04-19 22:38:19.0
-                   String []test1=dateTime.split(" ");
-                    //Log.d("sdsa", "parseJSONWithJSONObject: "+test1[1]);
-                   // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
-                   // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
-                   String []test2=test1[1].split(":");
 
-                   double hour = Double.parseDouble(test2[0]);
-                   double minuteSix = Double.parseDouble(test2[1]);
-                    double minuteTen = minuteSix / 100 * 60;
                         water.setHour(hour);
                         water.setMinute(minuteTen);
                         water.setTime(test1[0]);
