@@ -1,20 +1,29 @@
 package com.example.wxy.watertest10.View;
 
+import android.Manifest;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wxy.watertest10.Bean.BaseActivity;
+import com.example.wxy.watertest10.Model.IWaterServiceListener;
 import com.example.wxy.watertest10.Model.WaterQualityService;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.MainActivityFrament.HomeFragment;
@@ -35,17 +44,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     View nav_header;
     private DrawerLayout drawerLayout;
     int navisclick = 0;
+    private WaterQualityService.WaterQualityBinder waterQualityBinder;
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            waterQualityBinder = (WaterQualityService.WaterQualityBinder) service;
+        }
 
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*-------------------------创建数据库-----------------------------*/
+         LitePal.getDatabase();
         /*----------------------------服务--------------------------------*/
+       //DataSupport.deleteAll(WaterQualityDataBean.class);
        Intent startIntent = new Intent(this,WaterQualityService.class);
         startService(startIntent);
-        /*-------------------------创建数据库-----------------------------*/
-        LitePal.getDatabase();
+        bindService(startIntent, connection, BIND_AUTO_CREATE); // 绑定服务
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, 1);
+        }
+        /*------------------------litepal数据存储------------------------*/
+            waterQualityBinder.StartQualityDownload();
         /*-------------------------底部导航栏----------------------------*/
         home_btn = (ImageView)findViewById(R.id.home_button);
         home_btn.setOnClickListener(this);
@@ -80,6 +107,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
         /*----------------------------------------------------------------*/
+    }
+    /*-------------------------------------服务响应-------------------------------------------*/
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        switch (requestCode){
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "拒绝权限将无法使用程序", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+
+        }
     }
     @Override
     protected void onStart() {//由可见变不可见时
@@ -144,6 +185,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.Top_fragment, fragment);
         transaction.commit();
+    }
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        unbindService(connection);
     }
 
 }
