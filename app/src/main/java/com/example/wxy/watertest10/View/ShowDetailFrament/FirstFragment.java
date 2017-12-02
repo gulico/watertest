@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.example.wxy.watertest10.Bean.MyLineChart;
 import com.example.wxy.watertest10.R;
-import com.example.wxy.watertest10.View.MainActivity;
-import com.github.mikephil.charting.charts.LineChart;
+import com.example.wxy.watertest10.presenter.IShowdetailDataPersenter;
+import com.example.wxy.watertest10.presenter.ShowdetailDataPersenter;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -31,21 +31,38 @@ import cn.forward.androids.views.ScrollPickerView;
 
 import static com.example.wxy.watertest10.Bean.AppManager.currentActivity;
 
-public class FirstFragment extends Fragment{
+public class FirstFragment extends Fragment implements IShowdetailFrament{
 
-    MyLineChart mChart;
-    SeekBar seekBar;
-    TextView seekBar_progress;
+    private MyLineChart mChart;
+    private SeekBar seekBar;
+    private TextView seekBar_progress;
     private ScrollPickerView datapicker;
-    TextView highlight_data;
-    TextView highlight_time;
-    private static final String[] DATA = {"2017-04-21","2017-04-22","2017-04-23","2017-04-24"};
+    private TextView highlight_data;
+    private TextView highlight_time;
+    private IShowdetailDataPersenter iShowdetailDataPersenter;
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {//被创建
         // TODO Auto-generated method stub
         View v = inflater.inflate(R.layout.fragment_first_fragemnt, container,false);
+        iShowdetailDataPersenter = new ShowdetailDataPersenter(this);
+        /*----------------------------------初始化滚轮--------------------------------------*/
         datapicker = (ScrollPickerView)v.findViewById(R.id.data_picker);
-        datapicker.setData(new ArrayList<CharSequence>(Arrays.asList(DATA)));//设置选项
+        /*----------------------------------初始化折线图--------------------------------------*/
+        mChart = (MyLineChart)v.findViewById(R.id.linechart);
+        /*----------------------------------初始化进度条--------------------------------------*/
+        seekBar = (SeekBar)v.findViewById(R.id.seekbar);
+        seekBar_progress = (TextView)v.findViewById(R.id.seekbar_progresstext);
+        /*----------------------------------初始化被选中的数据--------------------------------------*/
+        highlight_data = (TextView)v.findViewById(R.id.highlight_data);
+        highlight_time = (TextView)v.findViewById(R.id.hightlight_time);
+        return v;
+    }
+    @Override
+    public void onStart() {//显示
+        super.onStart();
+        iShowdetailDataPersenter.loadData();//加载数据
+        initChart();
+        //datapicker.setData(iShowdetailDataPersenter.loadAllTimes());//设置选项
         datapicker.setSelectedPosition(0);//设置初始位置
         datapicker.setOnSelectedListener(new ScrollPickerView.OnSelectedListener() {//监听滚轮选择器变化
             @Override
@@ -55,9 +72,6 @@ public class FirstFragment extends Fragment{
                 mChart.invalidate();
             }
         });
-        mChart = (MyLineChart)v.findViewById(R.id.linechart);
-        initChart();
-        seekBar = (SeekBar)v.findViewById(R.id.seekbar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -66,21 +80,15 @@ public class FirstFragment extends Fragment{
                 //setData(progress,14);
                 mChart.invalidate();
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
-        seekBar_progress = (TextView)v.findViewById(R.id.seekbar_progresstext);
-        highlight_data = (TextView)v.findViewById(R.id.highlight_data);
-        highlight_time = (TextView)v.findViewById(R.id.hightlight_time);
-        return v;
     }
 
     private void setData(int count,float range){

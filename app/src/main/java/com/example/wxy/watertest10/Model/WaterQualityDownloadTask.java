@@ -129,7 +129,7 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
                         WaterQualityDataBean water = new WaterQualityDataBean();
                         //          2017-04-19 22:38:19.0
                         water.setCity(instrumentId);
-                        water.setHour(hour);
+                        //water.setHour(hour);
                         water.setMinute(minuteTen);
                         water.setTime(test1[0]);
                         water.setPh(PH);
@@ -155,6 +155,7 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
         switch (status){
             case TYPE_SUCCESS:
                 listener.onSuccsess();
+
                 break;
             default:
                 break;

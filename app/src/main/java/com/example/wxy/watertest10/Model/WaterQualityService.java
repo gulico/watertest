@@ -11,10 +11,13 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.wxy.watertest10.Bean.AppManager;
 import com.example.wxy.watertest10.Bean.WaterQualityDataBean;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.MainActivity;
+import com.example.wxy.watertest10.View.SplashActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +30,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import static android.R.id.progress;
+import static android.content.ContentValues.TAG;
 
 public class WaterQualityService extends Service {
 
@@ -38,6 +42,13 @@ public class WaterQualityService extends Service {
             waterTask = null;
             stopForeground(true);
             getNotificationManager().notify(1,getNotification("Down Success",progress));
+            //WaterQualityDataBean firstWater = DataSupport.findFirst(WaterQualityDataBean.class);
+            //Log.d("yxd", "onSuccsess: "+ firstWater.getHour());
+            //Log.d("yxd", "onSuccsess: "+firstWater.getPh());
+            Toast.makeText(WaterQualityService.this,"下载完成！",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(AppManager.currentActivity(),MainActivity.class);
+            startActivity(intent);
+            AppManager.finishActivity(SplashActivity.class);
         }
 
     };

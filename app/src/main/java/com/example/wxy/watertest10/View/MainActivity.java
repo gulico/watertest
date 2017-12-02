@@ -44,35 +44,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     View nav_header;
     private DrawerLayout drawerLayout;
     int navisclick = 0;
-    private WaterQualityService.WaterQualityBinder waterQualityBinder;
+   /* private WaterQualityService.WaterQualityBinder waterQualityBinder;
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             waterQualityBinder = (WaterQualityService.WaterQualityBinder) service;
+            waterQualityBinder.StartQualityDownload();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
 
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*-------------------------创建数据库-----------------------------*/
-         LitePal.getDatabase();
+        // LitePal.getDatabase();
         /*----------------------------服务--------------------------------*/
        //DataSupport.deleteAll(WaterQualityDataBean.class);
-       Intent startIntent = new Intent(this,WaterQualityService.class);
+      /* Intent startIntent = new Intent(this,WaterQualityService.class);
         startService(startIntent);
         bindService(startIntent, connection, BIND_AUTO_CREATE); // 绑定服务
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, 1);
-        }
+        }*/
         /*------------------------litepal数据存储------------------------*/
-            waterQualityBinder.StartQualityDownload();
+
         /*-------------------------底部导航栏----------------------------*/
         home_btn = (ImageView)findViewById(R.id.home_button);
         home_btn.setOnClickListener(this);
@@ -185,12 +186,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.Top_fragment, fragment);
         transaction.commit();
-    }
+    }/*
     @Override
     protected void onDestroy()
     {
         super.onDestroy();
         unbindService(connection);
-    }
+    }*/
 
 }

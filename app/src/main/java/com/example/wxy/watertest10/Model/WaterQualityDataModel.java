@@ -48,14 +48,8 @@ public class WaterQualityDataModel extends AppCompatActivity implements IWaterQu
 
     }
     public WaterQualityDataBean loadWaterQualityData(String prefix){//从数据库取出数据，传入地域前缀
-        Date date =new Date();
-        date.getTime();
-       // Log.d("yxd", "parseJSONWithJSONObject: " + "yes");
-        //WaterQualityDataBean waterQualityDataBean = new WaterQualityDataBean(prefix,date,7,10,25,70,10,20,30);    //();
-
-//HttpPost httpPost=new HttpPost("http://120.55.47.216:8060/ideaWater02/YascmfDatasController/findYascmfDatasByPojo.do");
-        //return waterQualityDataBean;
-        return null;
+        WaterQualityDataBean waterQualityDataBean = DataSupport.findLast(WaterQualityDataBean.class);
+        return waterQualityDataBean;
     }
 
 

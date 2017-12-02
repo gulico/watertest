@@ -4,9 +4,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.wxy.watertest10.Bean.SimpleQualityBean;
 import com.example.wxy.watertest10.Bean.WaterQualityDataBean;
@@ -14,7 +16,6 @@ import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.IMainActivity;
 import com.example.wxy.watertest10.presenter.IMainUiPersenter;
 import com.example.wxy.watertest10.presenter.MainUiPresenter;
-import com.example.wxy.watertest10.presenter.SimpleQualityRecyclerAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -24,6 +25,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+
 /**
  * Created by WXY on 2017/10/3.
  */
@@ -32,27 +35,34 @@ public class HomeFragment extends Fragment implements IMainActivity{
     WaterQualityDataBean waterQualityDataBean;
     IMainUiPersenter iMainUiPersenter;
     PieChart _dissolved_oxygenPie;//溶解氧饼图
-    private List<SimpleQualityBean> simpleQualityBeanList = new ArrayList<>();
-    private SimpleQualityRecyclerAdapter adapter;//适配器
+    TextView ph;//ph值
+    TextView conductivity;//导电性
+    TextView water_temperature;//水温
+    TextView ammonia_nitrogen;//氨态氮
+    TextView dissolved_oxygen;//溶解氧含量
+    TextView ntu;//浊度
+    TextView p;//磷
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.homeframent,container,false);
         iMainUiPersenter = new MainUiPresenter(this);
         _dissolved_oxygenPie = (PieChart) view.findViewById(R.id.dissolved_oxygenPie);
-        loadData();
-       // DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
-        //initRecycler();
-        //RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        //GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
-        //recyclerView.setLayoutManager(layoutManager);
-        //adapter = new SimpleQualityRecyclerAdapter(simpleQualityBeanList);
-        //recyclerView.setAdapter(adapter);
+        ph = (TextView)view.findViewById(R.id.ph);
+        conductivity = (TextView)view.findViewById(R.id.conductivity);
+        water_temperature = (TextView)view.findViewById(R.id.water_temperature);
+        ammonia_nitrogen = (TextView)view.findViewById(R.id.ammonia_nitrogen);
+        dissolved_oxygen = (TextView)view.findViewById(R.id.dissolved_oxygen);
+        ntu = (TextView)view.findViewById(R.id.ntu);
+        p = (TextView)view.findViewById(R.id.p);
+        Log.d(TAG, "onCreateView: YXD");
+        //loadData();//加载数据
+        //setdata();
+        //DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
         return view;
     }
     public void saveDate() {//保存界面上获取的数据
     }
-
     public void loadData() {//取出p层获得的数据反应到ui上
         iMainUiPersenter.loadDate();
     }
@@ -62,23 +72,14 @@ public class HomeFragment extends Fragment implements IMainActivity{
     public void setBean(WaterQualityDataBean waterQualityDataBean){//本层获取数据
         this.waterQualityDataBean = waterQualityDataBean;
     }
-    private void initRecycler(){
-     /*   simpleQualityBeanList.clear();
-        SimpleQualityBean bean1 = new SimpleQualityBean("酸碱度","pH",waterQualityDataBean.getPh());
-        simpleQualityBeanList.add(bean1);
-        SimpleQualityBean bean2 = new SimpleQualityBean("导电性","Conductivity",waterQualityDataBean.getConductivity());
-        simpleQualityBeanList.add(bean2);
-        SimpleQualityBean bean3 = new SimpleQualityBean("氨态氮","Ammonia nitrogen",waterQualityDataBean.getAmmonia_nitrogen());
-        simpleQualityBeanList.add(bean3);
-        SimpleQualityBean bean4 = new SimpleQualityBean("水温","Water temperature",waterQualityDataBean.getWater_temperature());
-        simpleQualityBeanList.add(bean4);
-        SimpleQualityBean bean5 = new SimpleQualityBean("溶解氧含量","Dissolved oxygen",waterQualityDataBean.getDissolved_oxygen());
-        simpleQualityBeanList.add(bean5);
-        SimpleQualityBean bean6 = new SimpleQualityBean("浊度","Ntu",waterQualityDataBean.getNtu());
-        simpleQualityBeanList.add(bean6);
-        SimpleQualityBean bean7 = new SimpleQualityBean("磷","P",waterQualityDataBean.getP());
-        simpleQualityBeanList.add(bean7);
-        */
+   public void setdata(){
+        ph.setText(waterQualityDataBean.getPh()+"");
+        conductivity.setText(waterQualityDataBean.getConductivity()+"");
+        water_temperature.setText(waterQualityDataBean.getWater_temperature()+"");
+        ammonia_nitrogen.setText(waterQualityDataBean.getAmmonia_nitrogen()+"");
+        dissolved_oxygen.setText(waterQualityDataBean.getDissolved_oxygen()+"");
+        ntu.setText(waterQualityDataBean.getNtu()+"");
+        p.setText(waterQualityDataBean.getP()+"");
     }
     private void DrawPieCharts(float a){//画饼图
         ArrayList<PieEntry> pieEntryList = new ArrayList<PieEntry>();
