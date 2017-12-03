@@ -36,10 +36,10 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
         RandomAccessFile saveFile =null;
         File file = null;
         try{
-            DataSupport.deleteAll(WaterQualityDataBean.class);
+            //DataSupport.deleteAll(WaterQualityDataBean.class);
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("http://120.55.47.216:8060/ideaWater02/YascmfDatasController/findYascmfDatasByPojo.do")
+                    .url("http://120.55.47.216:8060/ideaWater02/YascmfDatasController/findYascmfDatasByPojo.do?"+"instrumentId=D01")
                     .build();
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
@@ -50,8 +50,6 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
             double Ten = -10;
             int flag = 1;
             for(int i = 0; i < jsonArray.length(); i++) {
-
-
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String dateTime = jsonObject.getString("dateTime");//测试时间
                 String instrumentId = jsonObject.getString("instrumentId");//测式机型号
@@ -129,7 +127,7 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
                         WaterQualityDataBean water = new WaterQualityDataBean();
                         //          2017-04-19 22:38:19.0
                         water.setCity(instrumentId);
-                        //water.setHour(hour);
+                        water.setHour(hour);
                         water.setMinute(minuteTen);
                         water.setTime(test1[0]);
                         water.setPh(PH);

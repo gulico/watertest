@@ -42,9 +42,9 @@ public class WaterQualityService extends Service {
             waterTask = null;
             stopForeground(true);
             getNotificationManager().notify(1,getNotification("Down Success",progress));
-            //WaterQualityDataBean firstWater = DataSupport.findFirst(WaterQualityDataBean.class);
-            //Log.d("yxd", "onSuccsess: "+ firstWater.getHour());
-            //Log.d("yxd", "onSuccsess: "+firstWater.getPh());
+            WaterQualityDataBean firstWater = DataSupport.findFirst(WaterQualityDataBean.class);
+            Log.d("yxd", "onSuccsess: "+ firstWater.getHour());
+            Log.d("yxd", "onSuccsess: "+firstWater.getPh());
             Toast.makeText(WaterQualityService.this,"下载完成！",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(AppManager.currentActivity(),MainActivity.class);
             startActivity(intent);
@@ -59,11 +59,9 @@ public class WaterQualityService extends Service {
     }
     public class WaterQualityBinder extends Binder{
         public void StartQualityDownload(){
-
                 waterTask = new WaterQualityDownloadTask(listener);
                 waterTask.execute();
                 startForeground(1,getNotification("Downing",0));
-
         }
     }
     private NotificationManager getNotificationManager(){
