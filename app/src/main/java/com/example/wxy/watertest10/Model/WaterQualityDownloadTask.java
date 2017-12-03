@@ -91,36 +91,35 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
 
                     double minuteTenCheck = 0;
                     double minuteSixCheck = 0;
-                    JSONObject jsonObjectCheck = jsonArray.getJSONObject(i - 1);
-                    String dateTimeCheck = jsonObjectCheck.getString("dateTime");
-                    String[] test1Check = dateTimeCheck.split(" ");
-                    if(i >= 1) {
+                    if(i != 0) {
+                        JSONObject jsonObjectCheck = jsonArray.getJSONObject(i - 1);
+                        String dateTimeCheck = jsonObjectCheck.getString("dateTime");
+                        String[] test1Check = dateTimeCheck.split(" ");
+                        if (i >= 1) {
 
-                        //Log.d("sdsa", "parseJSONWithJSONObject: "+test1Check[0]);
-                        // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
-                        // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
-                        String[] test2Check = test1Check[1].split(":");
-                        // Log.d("sdsa", "parseJSONWithJSONObject: " + test1Check[1]);
-                        //  Log.d("xudongwudi", "onStartCommand: "+test2Check[1]);
-                        double hourCheck = Double.parseDouble(test2Check[0]);
-                        minuteSixCheck = Double.parseDouble(test2Check[1]);
-                        minuteTenCheck = minuteSixCheck / 100 * 60;
+                            //Log.d("sdsa", "parseJSONWithJSONObject: "+test1Check[0]);
+                            // Log.d("xudongwudi", "onStartCommand: "+test2[0]);
+                            // Log.d("xudongwudi", "onStartCommand: "+test2[1]);
+                            String[] test2Check = test1Check[1].split(":");
+                            // Log.d("sdsa", "parseJSONWithJSONObject: " + test1Check[1]);
+                            //  Log.d("xudongwudi", "onStartCommand: "+test2Check[1]);
+                            double hourCheck = Double.parseDouble(test2Check[0]);
+                            minuteSixCheck = Double.parseDouble(test2Check[1]);
+                            minuteTenCheck = minuteSixCheck / 100 * 60;
+                        }
+
+
+                        if (test1Check[0].equals(test1[0]) && flag == 0 && (Ten - minuteSix) >= 10) {
+                            flag = 1;
+                            Log.d("sasasg", "parseJSONWithJSONObject: " + (Ten - minuteSix) + "Ten : " + Ten + "minSix : " + minuteSix);
+
+                            Ten = minuteSix;
+
+                        } else if (!test1Check[0].equals(test1[0]) || minuteSix >= minuteSixCheck) {
+                            Ten = minuteSix;
+                        } else
+                            continue;
                     }
-
-
-
-                    if (test1Check[0].equals(test1[0]) && flag == 0 && ( Ten-minuteSix) >= 10) {
-                        flag = 1;
-                        Log.d("sasasg", "parseJSONWithJSONObject: " + (Ten-minuteSix )+"Ten : "+ Ten + "minSix : "+minuteSix);
-
-                        Ten = minuteSix;
-
-                    } else if(!test1Check[0].equals(test1[0]) || minuteSix >= minuteSixCheck)
-                    {
-                        Ten = minuteSix;
-                    }
-                    else
-                        continue;
                     //  Log.d("yxd", "parseJSONWithJSONObject: " + dateTime);
                     if (instrumentId.equals("D01") && flag == 1) {
                         //if(dateTime!=jsonArray.getJSONObject(i-1).getString("dateTime")) {

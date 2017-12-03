@@ -56,9 +56,9 @@ public class HomeFragment extends Fragment implements IMainActivity{
         ntu = (TextView)view.findViewById(R.id.ntu);
         p = (TextView)view.findViewById(R.id.p);
         Log.d(TAG, "onCreateView: YXD");
-        //loadData();//加载数据
-        //setdata();
-        //DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
+        loadData();//加载数据
+        setdata();
+        DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());
         return view;
     }
     public void saveDate() {//保存界面上获取的数据
