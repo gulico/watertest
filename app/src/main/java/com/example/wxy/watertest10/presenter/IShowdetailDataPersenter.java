@@ -1,5 +1,7 @@
 package com.example.wxy.watertest10.presenter;
 
+import com.github.mikephil.charting.data.Entry;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,4 +12,5 @@ import java.util.List;
 public interface IShowdetailDataPersenter {
     void loadData();
     List<String> loadAllTimes();
+    List<Entry> loadPh(String Time);
 }

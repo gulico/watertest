@@ -1,12 +1,17 @@
 package com.example.wxy.watertest10.presenter;
 
+import android.util.Log;
+
 import com.example.wxy.watertest10.Bean.WaterQualityDataBean;
 import com.example.wxy.watertest10.Model.IShowdetailDataModel;
 import com.example.wxy.watertest10.Model.ShowdetailDataModel;
 import com.example.wxy.watertest10.View.ShowDetailFrament.IShowdetailFrament;
+import com.github.mikephil.charting.data.Entry;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by WXY on 2017/11/26.
@@ -25,9 +30,25 @@ public class ShowdetailDataPersenter implements IShowdetailDataPersenter{
     }
     public List<String> loadAllTimes(){//获取全部日期
         List<String> AllTimes = new ArrayList<>();
+        String temp = new String("");
         for(WaterQualityDataBean waterQualityDataBean:waterQualityDataBeans){
-            AllTimes.add(waterQualityDataBean.getTime());
+            if(waterQualityDataBean.getTime().equals(temp)){
+                continue;
+            }else {
+                AllTimes.add(waterQualityDataBean.getTime());
+                temp = waterQualityDataBean.getTime();
+            }
         }
         return AllTimes;
+    }
+    public List<Entry> loadPh(String Time){
+        List<Entry> Ph = new ArrayList<>();
+        for(WaterQualityDataBean waterQualityDataBean:waterQualityDataBeans){
+           if(waterQualityDataBean.getTime().equals(Time)){
+               //Ph.add()
+               Log.d(TAG, "loadPh: "+waterQualityDataBean.getTime()+waterQualityDataBean.getHour()+"   "+waterQualityDataBean.getMinute());
+           }
+        }
+        return null;
     }
 }
