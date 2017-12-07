@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wxy.watertest10.View.Sign_Activity">
+
+    <TextView
+        android:id="@+id/activity_main_tv_main_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_40_px"
+        android:textSize="@dimen/d_42_px" />
+
+    <TextView
+        android:id="@+id/activity_main_tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_40_px"
+        android:textColor="@color/hex_1b89cd"
+        android:textSize="@dimen/d_95_px" />
+
+    <LinearLayout
+        android:id="@+id/activity_main_ll_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_130_px"
+        android:layout_marginTop="@dimen/d_54_px"
+        android:background="@color/hex_e9e9ea"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/activity_main_tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/d_43_px"
+            android:layout_marginStart="@dimen/d_43_px"
+            android:textColor="@color/hex_9c9c9c"
+            android:textSize="@dimen/d_43_px" />
+
+        <TextView
+            android:id="@+id/activity_main_tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/d_44_px"
+            android:layout_marginStart="@dimen/d_44_px"
+            android:textColor="@color/hex_9c9c9c"
+            android:textSize="@dimen/d_43_px" />
+    </LinearLayout>
+
+    <com.example.wxy.watertest10.View.SignView
+        android:id="@+id/activity_main_cv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_818_px" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_main_btn_sign"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_142_px"
+        android:layout_marginLeft="@dimen/d_42_px"
+        android:layout_marginRight="@dimen/d_42_px"
+        android:layout_marginTop="@dimen/d_111_px"
+        android:text="@string/sign"
+        android:textColor="@color/white"
+        android:textSize="@dimen/d_54_px" />
+</LinearLayout>

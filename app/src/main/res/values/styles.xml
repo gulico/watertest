@@ -25,4 +25,31 @@
         <!--模糊-->
     </style>
 
+
+
+    <style name="AppTheme.DialogNoTitle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--  dialog主题设置  -->
+        <item name="alertDialogTheme">@style/AlertDialog</item>
+        <item name="android:dialogTheme">@style/DialogNoTitle</item>
+    </style>
+
+    <style name="DialogNoTitle" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item><!--除去title-->
+    </style>
+
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="buttonBarNegativeButtonStyle">@style/AlertDialog.Negative</item>
+        <item name="buttonBarPositiveButtonStyle">@style/AlertDialog.Positive</item>
+    </style>
+
+    <style name="AlertDialog.Negative" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/hex_9c9c9c</item>
+    </style>
+
+    <style name="AlertDialog.Positive" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/hex_1b89cd</item>
+    </style>
+
 </resources>

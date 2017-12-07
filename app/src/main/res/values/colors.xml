@@ -12,4 +12,73 @@
     <color name="colorLine">#d5d5d5</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+
+    <color name="half_transparent_black">#7F000000</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="hex_1b89cd">#FF1B89CD</color>
+    <color name="hex_323232">#FF323232</color>
+    <color name="hex_333333">#FF333333</color>
+    <color name="hex_4d4d4d">#FF4D4D4D</color>
+    <color name="hex_666666">#FF666666</color>
+    <color name="hex_7d7d7d">#FF7D7D7D</color>
+    <color name="hex_801b89cd">#801B89CD</color>
+    <color name="hex_828282">#FF828282</color>
+    <color name="hex_8d8d8d">#FF8D8D8D</color>
+    <color name="hex_999999">#FF999999</color>
+    <color name="hex_9c9c9c">#FF9C9C9C</color>
+    <color name="hex_bcbcbc">#FFBCBCBC</color>
+    <color name="hex_c6c6c6">#FFC6C6C6</color>
+    <color name="hex_d3d3d3">#FFD3D3D3</color>
+    <color name="hex_e9e9ea">#FFE9E9EA</color>
+    <color name="hex_e9e9e9">#FFE9E9E9</color>
+    <color name="hex_eeeeee">#FFEEEEEE</color>
+    <color name="hex_f0f0f0">#FFF0F0F0</color>
+    <color name="hex_f8f8f8">#FFF8F8F8</color>
+    <color name="hex_ff203a">#FFFF203A</color>
+    <color name="hex_4680d1">#FF4680d1</color>
+    <color name="hex_ca6914">#FFca6914</color>
+
+    <!--              问政模块4个按钮颜色                   -->
+    <color name="politics_query_normal">#31C1A0</color>
+    <color name="politics_query_select">#289A80</color>
+    <color name="politics_upload_normal">#FF545A</color>
+    <color name="politics_upload_select">#CC4448</color>
+    <color name="politics_publish_normal">#1AB2EB</color>
+    <color name="politics_publish_select">#158EBC</color>
+    <color name="politics_replay_normal">#F9B500</color>
+    <color name="politics_replay_select">#C79100</color>
+    <!--              签到页面顶部返回按钮                   -->
+    <color name="action_bar_sign_btn_back_pressed">#80FFFFFF</color>
+    <color name="action_bar_sign_btn_back_normal">@color/white</color>
+    <!--              通用页面顶部返回按钮                   -->
+    <color name="action_bar_btn_back_normal">@color/hex_1b89cd</color>
+    <color name="action_bar_btn_back_pressed">#801B89CD</color>
+    <color name="item_lv_area_pressed">#33000000</color>
+    <color name="item_lv_area_normal">@color/transparent</color>
+    <color name="navigator_btn_pressed">@color/hex_f8f8f8</color>
+    <color name="navigator_btn_normal">@color/white</color>
+    <color name="setting_btn_pressed">#80FFFFFF</color>
+    <color name="setting_btn_normal">@color/white</color>
+    <color name="filter_item_btn_pressed">@color/hex_f8f8f8</color>
+    <color name="filter_item_btn_normal">@color/white</color>
+    <color name="submit_btn_normal">@color/hex_1b89cd</color>
+    <color name="submit_btn_pressed">#166EA5</color>
+    <color name="submit_btn_disabled">@color/hex_bcbcbc</color>
+    <color name="user_form_item_input_hint_color">#FFC6C6C6</color>
+    <!--              获取验证码按钮样式                   -->
+    <color name="verify_text_normal">@color/hex_7d7d7d</color>
+    <color name="verify_text_pressed">@color/white</color>
+    <color name="verify_text_disabled">@color/white</color>
+    <color name="verify_btn_normal">@color/hex_eeeeee</color>
+    <color name="verify_btn_pressed">@color/hex_bcbcbc</color>
+    <color name="verify_btn_disabled">@color/hex_bcbcbc</color>
+    <color name="hex_646464">#FF646464</color>
+    <color name="hex_9b9b9b">#FF9B9B9B</color>
+    <color name="hex_fd8319">#fd8319</color>
+    <color name="hex_3866a7">#3866a7</color>
+    <color name="navigation_background">#E61C89CE</color>
+    <color name="half_transparent_white">#80FFFFFF</color>
+    <color name="hex_fafafa">#FFFAFAFA</color>
+    <color name="hex_ededed">#FFEDEDED</color>
 </resources>

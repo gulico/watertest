@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name">WaterTest1.0</string>
 
+    <string name="sign">签到</string>
+    <string name="sign_succeed_today">今日签到成功，增加积分</string>
+    <string name="sure">确定</string>
+    <string name="have_signed">已签到</string>
+    <string name="much_score_int">%1$d 分</string>
+    <string name="you_have_sign"><Data><![CDATA[<font color="%1$s">您已连续签到 </font><font color="%2$s">%3$d</font> <font color="%1$s">天，累计获得积分</font>]]></Data></string>
+
+    <string-array name="month_array">
+        <item>一月</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>十一月</item>
+        <item>十二月</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

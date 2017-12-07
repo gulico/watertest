@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_sign_tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_67_px"
+        android:text="@string/sign_succeed_today"
+        android:textSize="@dimen/d_44_px" />
+
+    <TextView
+        android:id="@+id/dialog_sign_tv_score_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/d_39_px"
+        android:textColor="@color/hex_1b89cd" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/dialog_sign_btn_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/d_67_px"
+        android:layout_marginLeft="@dimen/d_73_px"
+        android:layout_marginRight="@dimen/d_73_px"
+        android:layout_marginTop="@dimen/d_61_px"
+        android:padding="0dp"
+        android:text="@string/sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/d_48_px" />
+</LinearLayout>
