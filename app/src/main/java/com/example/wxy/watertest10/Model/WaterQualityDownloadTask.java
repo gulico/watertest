@@ -82,7 +82,7 @@ public class WaterQualityDownloadTask extends AsyncTask<Object, Object, Integer>
                     double hour = Double.parseDouble(test2[0]);//小时
                     double minuteSix = Double.parseDouble(test2[1]);//分钟
 
-                    double minuteTen = minuteSix / 60 * 1000;
+                    double minuteTen = minuteSix / 60 * 100;
 
                     if (flag == 1 && i != 0) {
                         Ten = minuteSix;

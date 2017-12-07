@@ -32,6 +32,7 @@ public class ShowdetailDataPersenter implements IShowdetailDataPersenter{
         List<String> AllTimes = new ArrayList<>();
         String temp = new String("");
         for(WaterQualityDataBean waterQualityDataBean:waterQualityDataBeans){
+            Log.d(TAG, "loadAllTimes: "+waterQualityDataBean.getTime());
             if(waterQualityDataBean.getTime().equals(temp)){
                 continue;
             }else {
@@ -44,9 +45,10 @@ public class ShowdetailDataPersenter implements IShowdetailDataPersenter{
     public List<Entry> loadPh(String Time){
         List<Entry> Ph = new ArrayList<>();
         for(WaterQualityDataBean waterQualityDataBean:waterQualityDataBeans){
+            Log.d(TAG, "loadPh: "+waterQualityDataBean.getTime()+"     "+waterQualityDataBean.getHour()+"   "+waterQualityDataBean.getMinute());
            if(waterQualityDataBean.getTime().equals(Time)){
                //Ph.add()
-               Log.d(TAG, "loadPh: "+waterQualityDataBean.getTime()+waterQualityDataBean.getHour()+"   "+waterQualityDataBean.getMinute());
+               //Log.d(TAG, "loadPh: "+waterQualityDataBean.getTime()+"     "+waterQualityDataBean.getHour()+"   "+waterQualityDataBean.getMinute());
            }
         }
         return null;

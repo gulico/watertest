@@ -42,7 +42,7 @@ public class FirstFragment extends Fragment implements IShowdetailFrament {
     private TextView highlight_data;
     private TextView highlight_time;
     private IShowdetailDataPersenter iShowdetailDataPersenter;
-    private List<Entry> values = new ArrayList<Entry>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {//被创建
@@ -100,6 +100,7 @@ public class FirstFragment extends Fragment implements IShowdetailFrament {
     }
 
     private void setData(int count, float range) {
+        List<Entry> values = new ArrayList<Entry>();
         for (float i = 0; i < 24; i++) {
 
            float val = (float) (Math.random() * range);
