@@ -47,6 +47,7 @@ public class WaterQualityService extends Service {
             Log.d("yxd", "onSuccsess: "+firstWater.getPh());
             Toast.makeText(WaterQualityService.this,"下载完成！",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(AppManager.currentActivity(),MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             AppManager.finishActivity(SplashActivity.class);
         }

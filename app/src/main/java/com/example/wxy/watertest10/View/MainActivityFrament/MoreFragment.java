@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.MainActivity;
+import com.example.wxy.watertest10.View.NewsActivity;
 import com.example.wxy.watertest10.View.UploadPhotosActivity;
 
 import java.util.ArrayList;
@@ -105,7 +106,8 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.To_news://新闻动态
-                Toast.makeText(acticity,"to news",Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(acticity, NewsActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.To_comments://通知公告
                 Toast.makeText(acticity,"to comments",Toast.LENGTH_SHORT).show();

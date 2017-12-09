@@ -27,13 +27,15 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/de_viewpager"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:layout_anchor="@id/detailfappbar"
             app:layout_anchorGravity="bottom">
         </android.support.v4.view.ViewPager>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
             android:orientation="horizontal"
             android:background="@color/colorPrimary">
             <LinearLayout
@@ -106,6 +108,10 @@
                     android:text="拍照投诉"/>
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"></LinearLayout>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

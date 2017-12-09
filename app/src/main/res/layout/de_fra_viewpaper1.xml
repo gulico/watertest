@@ -4,5 +4,9 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     android:orientation="vertical" >
-
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"
+    android:src="@drawable/ship_collection"/>
 </LinearLayout>

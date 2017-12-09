@@ -2,7 +2,6 @@ package com.example.wxy.watertest10.View;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.text.Html;
 import android.util.TypedValue;
@@ -14,8 +13,9 @@ import android.widget.TextView;
 
 import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.Bean.ResolutionUtil;
+import com.example.wxy.watertest10.Bean.SignView;
 import com.example.wxy.watertest10.R;
-import com.example.wxy.watertest10.View.ShowDetailFrament.SignDialogFragment;
+import com.example.wxy.watertest10.View.SignFrament.SignDialogFragment;
 import com.example.wxy.watertest10.presenter.SignAdapter;
 import com.example.wxy.watertest10.presenter.SignEntity;
 
@@ -29,7 +29,7 @@ public class Sign_Activity extends BaseActivity{
     private TextView tvScore;
     private TextView tvYear;
     private TextView tvMonth;
-    private com.example.wxy.watertest10.View.SignView signView;
+    private SignView signView;
     private AppCompatButton btnSign;
     private List<SignEntity> data;
 
@@ -37,7 +37,6 @@ public class Sign_Activity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
-
         initView();
         onReady();
     }
@@ -47,7 +46,7 @@ public class Sign_Activity extends BaseActivity{
         tvScore = (TextView) findViewById(R.id.activity_main_tv_score);
         tvYear = (TextView) findViewById(R.id.activity_main_tv_year);
         tvMonth = (TextView) findViewById(R.id.activity_main_tv_month);
-        signView = (com.example.wxy.watertest10.View.SignView) findViewById(R.id.activity_main_cv);
+        signView = (SignView) findViewById(R.id.activity_main_cv);
         btnSign = (AppCompatButton) findViewById(R.id.activity_main_btn_sign);
         if (signView != null) {
             signView.setOnTodayClickListener(onTodayClickListener);
@@ -143,7 +142,7 @@ public class Sign_Activity extends BaseActivity{
     }
 
     private void signToday() {
-        data.get(signView.getDayOfMonthToday() - 1).setDayType(com.example.wxy.watertest10.View.SignView.DayType.SIGNED.getValue());
+        data.get(signView.getDayOfMonthToday() - 1).setDayType(SignView.DayType.SIGNED.getValue());
         signView.notifyDataSetChanged();
         btnSign.setEnabled(false);
         btnSign.setText(R.string.have_signed);
@@ -152,7 +151,7 @@ public class Sign_Activity extends BaseActivity{
         tvScore.setText(String.valueOf(score + 15));
     }
 
-    private com.example.wxy.watertest10.View.SignView.OnTodayClickListener onTodayClickListener = new com.example.wxy.watertest10.View.SignView.OnTodayClickListener() {
+    private SignView.OnTodayClickListener onTodayClickListener = new SignView.OnTodayClickListener() {
         @Override
         public void onTodayClick() {
             onSign();

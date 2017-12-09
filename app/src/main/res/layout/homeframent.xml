@@ -31,6 +31,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/donghu2"
                 app:layout_collapseMode="parallax" />
+
             <TextView
                 android:id="@+id/City"
                 android:layout_width="wrap_content"
@@ -74,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="当前数据"
                     android:textColor="@color/colorTextTitle"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -111,7 +112,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="生活建议"
-                        android:textColor="@color/cardview_dark_background" />
+                        android:textColor="@color/colorTextTitle"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -129,8 +131,5 @@
 
 
     </android.support.v4.widget.NestedScrollView>
-
     <!--浮动按钮-->
-
-
 </android.support.design.widget.CoordinatorLayout>

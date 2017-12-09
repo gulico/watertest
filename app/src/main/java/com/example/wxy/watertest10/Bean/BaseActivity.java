@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.wxy.watertest10.R;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by WXY on 2017/11/7.
  */
@@ -20,5 +22,13 @@ public class BaseActivity extends AppCompatActivity{
     protected void onDestroy() {
         super.onDestroy();
         AppManager.finishActivity(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if(isTaskRoot()){
+            //DataSupport.deleteAll(WaterQualityDataBean.class);
+        }
     }
 }

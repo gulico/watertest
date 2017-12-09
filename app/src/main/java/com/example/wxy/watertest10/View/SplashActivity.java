@@ -16,10 +16,12 @@ import android.view.KeyEvent;
 import android.view.Window;
 
 import com.example.wxy.watertest10.Bean.BaseActivity;
+import com.example.wxy.watertest10.Bean.WaterQualityDataBean;
 import com.example.wxy.watertest10.Model.WaterQualityService;
 import com.example.wxy.watertest10.R;
 
 import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
 
 public class SplashActivity extends BaseActivity {
     //private final int SPLASH_DISPLAY_LENGHT = 3000;//开启动画时间设置为3秒

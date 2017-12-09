@@ -21,7 +21,7 @@ public class WaterQualityDataBean extends DataSupport {
     private double dissolved_oxygen;//溶解氧含量
     private double ntu;//浊度
     private double p;//磷
-    private double minute;
+    //private double minute;
     private double hour;
 
     public void setHour(double hour) {
@@ -32,13 +32,13 @@ public class WaterQualityDataBean extends DataSupport {
         return hour;
     }
 
-    public double getMinute() {
-        return minute;
-    }
+   // public double getMinute() {
+    //    return minute;
+   // }
 
-    public void setMinute(double minute) {
-        this.minute = minute;
-    }
+    //public void setMinute(double minute)// {
+        //this.minute = minute;
+    //}
 
     public void setCity(String city) {
         City = city;

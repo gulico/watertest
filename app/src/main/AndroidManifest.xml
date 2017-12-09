@@ -27,22 +27,19 @@
 
         <activity
             android:name=".View.MainActivity"
-            android:theme="@style/MainActivityTheme">
-        </activity>
+            android:theme="@style/MainActivityTheme" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
 
-        <activity android:name=".View.EditEarlyWarningActivity" />
         <activity android:name=".View.ShowDetailActivity" />
         <activity android:name=".View.AboutUsActivity" />
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.UploadPhotosActivity" />
         <activity android:name=".View.SettingActivity" />
-        <activity android:name=".View.Sign_Activity"/>
-
+        <activity android:name=".View.Sign_Activity" />
 
         <service
             android:name=".Model.WaterQualityService"
@@ -50,12 +47,16 @@
             android:exported="true" />
 
         <activity android:name=".View.SplashActivity">
-            <!--开启动画-->
+
+            <!-- 开启动画 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.NewsActivity" />
+        <activity android:name=".View.NewsDisplayActivity"></activity>
     </application>
 
 </manifest>

@@ -25,29 +25,27 @@ public class ShowdetailDataModel implements IShowdetailDataModel {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println("当前时间1：" + sdf1.format(d));
         List<WaterQualityDataBean> waterQualityDataBeens = new ArrayList<WaterQualityDataBean>();
+        waterQualityDataBeens = DataSupport.findAll(WaterQualityDataBean.class);
+        /*
         Cursor c = DataSupport.findBySQL("select * from WaterQualityDataBean ");
         int i=0;
         if (c.moveToFirst()) {
-            do {
-                //Log.d(TAG, "loadData: "+c.getString(2));
-                //i++;
-                //Log.d(TAG, "loadData: "+i);
+            do {//2日期，3Ammonia_nitrogen，4Conductivity，5Dissolved_oxygen，6hour，7minute,8ntu,9p，10ph,11水温，
                 WaterQualityDataBean waterQualityDataBean = new WaterQualityDataBean();
                 waterQualityDataBean.setTime(c.getString(2));
-                waterQualityDataBean.setPh(c.getDouble(3));
+                waterQualityDataBean.setPh(c.getDouble(10));
                 waterQualityDataBean.setConductivity(c.getDouble(4));
-                waterQualityDataBean.setWater_temperature(c.getDouble(5));
-                waterQualityDataBean.setAmmonia_nitrogen(c.getDouble(6));
-                waterQualityDataBean.setDissolved_oxygen(c.getDouble(7));
+                waterQualityDataBean.setWater_temperature(c.getDouble(11));
+                waterQualityDataBean.setAmmonia_nitrogen(c.getDouble(3));
+                waterQualityDataBean.setDissolved_oxygen(c.getDouble(5));
                 waterQualityDataBean.setNtu(c.getDouble(8));
                 waterQualityDataBean.setP(c.getDouble(9));
-                waterQualityDataBean.setMinute(c.getDouble(10));
-                waterQualityDataBean.setHour(c.getDouble(11));
+                waterQualityDataBean.setMinute(c.getDouble(7));
+                waterQualityDataBean.setHour(c.getDouble(6));
                 waterQualityDataBeens.add(waterQualityDataBean);
-
             } while (c.moveToNext());
         }
-        c.close();
+        c.close();*/
         // Date d2 = new Date();
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //System.out.println("当前时间2：" + sdf.format(d));

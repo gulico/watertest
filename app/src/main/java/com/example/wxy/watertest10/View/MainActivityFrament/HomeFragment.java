@@ -55,7 +55,6 @@ public class HomeFragment extends Fragment implements IMainActivity{
         dissolved_oxygen = (TextView)view.findViewById(R.id.dissolved_oxygen);
         ntu = (TextView)view.findViewById(R.id.ntu);
         p = (TextView)view.findViewById(R.id.p);
-        Log.d(TAG, "onCreateView: YXD");
         loadData();//加载数据
         setdata();
         DrawPieCharts((float) waterQualityDataBean.getDissolved_oxygen());

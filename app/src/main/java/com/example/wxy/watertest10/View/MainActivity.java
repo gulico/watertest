@@ -95,6 +95,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.sign_in://签到
+                        Intent intent2 = new Intent(MainActivity.this,Sign_Activity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.settings://设置
                         Intent intent = new Intent(MainActivity.this,SettingActivity.class);

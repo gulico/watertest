@@ -1,4 +1,4 @@
-package com.example.wxy.watertest10.View;
+package com.example.wxy.watertest10.Bean;
 
 import android.content.Context;
 import android.graphics.Canvas;

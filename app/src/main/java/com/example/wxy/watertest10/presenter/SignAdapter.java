@@ -1,6 +1,6 @@
 package com.example.wxy.watertest10.presenter;
 
-import com.example.wxy.watertest10.View.SignView;
+import com.example.wxy.watertest10.Bean.SignView;
 
 import java.util.List;
 
