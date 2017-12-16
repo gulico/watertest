@@ -121,9 +121,7 @@
                         android:layout_margin="5dp"
                         android:background="@color/colorLine" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    <include layout="@layout/homesuggest"/>
                 </LinearLayout>
 
             </LinearLayout>

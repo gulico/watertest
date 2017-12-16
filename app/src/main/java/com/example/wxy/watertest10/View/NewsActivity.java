@@ -40,6 +40,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         back = (ImageView)findViewById(R.id.back) ;
+        back.setOnClickListener(this);
         getNews();
         recyclerView = (RecyclerView) findViewById(R.id.recyclervView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
