@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.wxy.watertest10.Bean.AppManager;
+import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.ShowDetailFrament.FifthFragment;
 import com.example.wxy.watertest10.View.ShowDetailFrament.FirstFragment;
@@ -24,7 +25,7 @@ import com.example.wxy.watertest10.presenter.MyFragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class ShowDetailActivity extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener{
+public class ShowDetailActivity extends BaseActivity implements View.OnClickListener,ViewPager.OnPageChangeListener{
     //fragment的集合，对应每个子页面
     private ArrayList<Fragment> fragments;
     private ViewPager myviewpager;
