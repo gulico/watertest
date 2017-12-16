@@ -99,10 +99,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         startActivity(intent2);
                         break;
                     case R.id.settings://设置
-                        Intent intent = new Intent(MainActivity.this,SettingActivity.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(MainActivity.this,SettingActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.information://关于我们
+                        Intent intent3 = new Intent(MainActivity.this,AboutUsActivity.class);
+                        startActivity(intent3);
                         break;
                     default:
                 }
@@ -188,12 +190,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         android.support.v4.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.Top_fragment, fragment);
         transaction.commit();
-    }/*
-    @Override
-    protected void onDestroy()
-    {
-        super.onDestroy();
-        unbindService(connection);
-    }*/
-
+    }
 }
