@@ -35,7 +35,6 @@
             android:process=":remote" />
 
         <activity android:name=".View.ShowDetailActivity" />
-        <activity android:name=".View.AboutUsActivity" />
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.UploadPhotosActivity" />
         <activity android:name=".View.SettingActivity" />
@@ -56,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.NewsActivity" />
-        <activity android:name=".View.NewsDisplayActivity"></activity>
+        <activity android:name=".View.NewsDisplayActivity" />
     </application>
 
 </manifest>
