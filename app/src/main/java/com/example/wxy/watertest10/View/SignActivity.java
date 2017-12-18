@@ -15,7 +15,6 @@ import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.Bean.ResolutionUtil;
 import com.example.wxy.watertest10.Bean.SignView;
 import com.example.wxy.watertest10.R;
-import com.example.wxy.watertest10.View.SignFrament.SignDialogFragment;
 import com.example.wxy.watertest10.presenter.SignAdapter;
 import com.example.wxy.watertest10.presenter.SignEntity;
 
@@ -24,7 +23,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-public class Sign_Activity extends BaseActivity{
+public class SignActivity extends BaseActivity{
     private TextView tvSignDay;
     private TextView tvScore;
     private TextView tvYear;
@@ -64,7 +63,6 @@ public class Sign_Activity extends BaseActivity{
 
         //---------------------------------分辨率适配----------------------------------
         ResolutionUtil resolutionUtil = ResolutionUtil.getInstance();
-
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         layoutParams.topMargin = resolutionUtil.formatVertical(40);
@@ -113,13 +111,13 @@ public class Sign_Activity extends BaseActivity{
         int month = calendar.get(Calendar.MONTH);
 
         tvSignDay.setText(Html.fromHtml(String.format(getString(R.string.you_have_sign), "#999999", "#1B89CD", 3)));
-        tvScore.setText(String.valueOf(3015));
+        tvScore.setText(String.valueOf(3015));/////要改
         tvYear.setText(String.valueOf(calendar.get(Calendar.YEAR)));
         tvMonth.setText(getResources().getStringArray(R.array.month_array)[month]);
 
         Calendar calendarToday = Calendar.getInstance();
         int dayOfMonthToday = calendarToday.get(Calendar.DAY_OF_MONTH);
-
+/*---------------------------------------签到日期------------------------------------------------------*/
         data = new ArrayList<>();
         Random ran = new Random();
         for (int i = 0; i < 30; i++) {
@@ -127,7 +125,7 @@ public class Sign_Activity extends BaseActivity{
             if (dayOfMonthToday == i + 1)
                 signEntity.setDayType(2);
             else
-                signEntity.setDayType((ran.nextInt(1000) % 2 == 0) ? 0 : 1);
+                signEntity.setDayType(0);
             data.add(signEntity);
         }
         SignAdapter signAdapter = new SignAdapter(data);

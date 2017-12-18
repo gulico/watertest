@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.wxy.watertest10.View.Sign_Activity">
+    tools:context="com.example.wxy.watertest10.View.SignActivity">
 
     <TextView
         android:id="@+id/activity_main_tv_main_day"

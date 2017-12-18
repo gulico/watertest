@@ -1,20 +1,14 @@
 package com.example.wxy.watertest10.View;
 
-import android.Manifest;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,14 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxy.watertest10.Bean.BaseActivity;
-import com.example.wxy.watertest10.Model.IWaterServiceListener;
-import com.example.wxy.watertest10.Model.WaterQualityService;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.View.MainActivityFrament.HomeFragment;
 import com.example.wxy.watertest10.View.MainActivityFrament.MapFragment;
 import com.example.wxy.watertest10.View.MainActivityFrament.MoreFragment;
-
-import org.litepal.LitePal;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -95,7 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.sign_in://签到
-                        Intent intent2 = new Intent(MainActivity.this,Sign_Activity.class);
+                        Intent intent2 = new Intent(MainActivity.this,SignActivity.class);
                         startActivity(intent2);
                         break;
                     case R.id.settings://设置

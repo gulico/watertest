@@ -5,8 +5,8 @@ package com.example.wxy.watertest10.presenter;
  * Created by E.M on 2016/4/21.
  */
 public class SignEntity {
-    private int dayOfMonth;
-    private int dayType;
+    private int dayOfMonth;//本月有几天
+    private int dayType;//这天的状态
 
     public int getDayOfMonth() {
         return dayOfMonth;

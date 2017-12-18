@@ -1,4 +1,4 @@
-package com.example.wxy.watertest10.View.SignFrament;
+package com.example.wxy.watertest10.View;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;

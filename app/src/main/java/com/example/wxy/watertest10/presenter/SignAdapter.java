@@ -15,6 +15,7 @@ public class SignAdapter extends CalendarAdapter {
         this.data = data;
     }
 
+
     @Override
     public SignView.DayType getType(int dayOfMonth) {
         return SignView.DayType.valueOf(data.get(dayOfMonth - 1).getDayType());
