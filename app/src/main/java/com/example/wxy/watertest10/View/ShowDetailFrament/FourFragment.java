@@ -112,7 +112,7 @@ public class FourFragment extends Fragment implements IShowdetailFrament{
         final LineData data = new LineData(dataSets);
         // set data
         mChart.setData(data);
-        mChart.setVisibleXRange(0, 24);
+        //mChart.setVisibleXRange(0, 24);
     }
 
     private void initChart() {

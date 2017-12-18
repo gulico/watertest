@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment implements IMainActivity {
     private String gm = new String("");//感冒
     private String cy = new String("");//穿衣
     private String xc = new String("");//洗车
-    private String ks = new String("");//扩散
+    //private String ks = new String("");//扩散
 
     @Nullable
     @Override
@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment implements IMainActivity {
         gmtext = (TextView)view.findViewById(R.id.gm);
         cytext = (TextView)view.findViewById(R.id.cy);
         xctext = (TextView)view.findViewById(R.id.xc);
-        kstext = (TextView)view.findViewById(R.id.ks);
+        //kstext = (TextView)view.findViewById(R.id.ks);
         getsuggest();
         loadData();//加载数据
         setdata();
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment implements IMainActivity {
                     gmtext.setText(gm);
                     cytext.setText(cy);
                     xctext.setText(xc);
-                    kstext.setText(ks);
+                    //kstext.setText(ks);
                 }
             }
         };
@@ -176,7 +176,7 @@ public class HomeFragment extends Fragment implements IMainActivity {
                     Elements xcvalue = doc.getElementsByClass("li4");//洗车指数
                     xc = xcvalue.get(0).select("p").text();
                     Elements ksvalue = doc.getElementsByClass("li6");//空气扩散
-                    ks = ksvalue.get(0).select("p").text();
+                    //ks = ksvalue.get(0).select("p").text();
                     Message msg = new Message();
                     msg.what = 1;
                     handler.sendMessage(msg);

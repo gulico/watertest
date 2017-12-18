@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WaterTest1.0</string>
+    <string name="app_name">水质监测</string>
 
     <string name="sign">签到</string>
     <string name="sign_succeed_today">今日签到成功，增加积分</string>

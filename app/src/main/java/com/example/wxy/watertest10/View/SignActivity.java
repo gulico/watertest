@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-public class SignActivity extends BaseActivity{
+public class SignActivity extends BaseActivity implements View.OnClickListener{
     private TextView tvSignDay;
     private TextView tvScore;
     private TextView tvYear;
@@ -31,6 +32,7 @@ public class SignActivity extends BaseActivity{
     private SignView signView;
     private AppCompatButton btnSign;
     private List<SignEntity> data;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class SignActivity extends BaseActivity{
         tvMonth = (TextView) findViewById(R.id.activity_main_tv_month);
         signView = (SignView) findViewById(R.id.activity_main_cv);
         btnSign = (AppCompatButton) findViewById(R.id.activity_main_btn_sign);
+        back = (ImageView)this.findViewById(R.id.back);
+        back.setOnClickListener(this);
         if (signView != null) {
             signView.setOnTodayClickListener(onTodayClickListener);
         }
@@ -162,4 +166,14 @@ public class SignActivity extends BaseActivity{
             signToday();
         }
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.back:
+                finish();
+                break;
+            default:
+        }
+    }
 }
