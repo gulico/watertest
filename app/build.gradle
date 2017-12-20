@@ -46,4 +46,6 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.forward.androids:androids:1.1.7'
     compile 'org.jsoup:jsoup:1.11.2'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.alibaba:fastjson:1.2.4'
 }
