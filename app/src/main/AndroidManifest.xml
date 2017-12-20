@@ -56,7 +56,8 @@
         </activity>
         <activity android:name=".View.NewsActivity" />
         <activity android:name=".View.NewsDisplayActivity" />
-        <activity android:name=".View.AboutUsActivity"></activity>
+        <activity android:name=".View.AboutUsActivity" />
+        <activity android:name=".View.PunchClockActivity"></activity>
     </application>
 
 </manifest>

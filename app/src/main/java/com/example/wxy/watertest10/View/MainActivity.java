@@ -88,6 +88,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         Intent intent2 = new Intent(MainActivity.this,SignActivity.class);
                         startActivity(intent2);
                         break;
+                    case R.id.timecard://打卡
+                        Intent intent4 = new Intent(MainActivity.this,PunchClockActivity.class);
+                        startActivity(intent4);
+                        break;
                     case R.id.settings://设置
                         Intent intent1 = new Intent(MainActivity.this,SettingActivity.class);
                         startActivity(intent1);

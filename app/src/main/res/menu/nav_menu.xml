@@ -6,6 +6,11 @@
             android:icon="@mipmap/sign_in"
             android:title="签到"/>
         <item
+            android:id="@+id/timecard"
+            android:icon="@mipmap/timecard_icon"
+            android:title="打卡"
+            />
+        <item
             android:id="@+id/settings"
             android:icon="@mipmap/settings"
             android:title="设置"/>
