@@ -284,7 +284,7 @@ public class UploadPhotosActivity extends BaseActivity implements View.OnClickLi
             public void run() {
                 try {
                     HttpClient httpclient=new DefaultHttpClient();
-                    HttpPost httpPost=new HttpPost("http://192.168.2.219:8060/ideaWater02/PhotoController/insertPhoto.do");
+                    HttpPost httpPost=new HttpPost("http://120.55.47.216:8060/ideaWater02/PhotoController/insertPhoto.do");
 
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
