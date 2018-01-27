@@ -1,5 +1,8 @@
 package com.example.wxy.watertest10.View;
 
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,19 +12,33 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.alibaba.fastjson.JSON;
 import com.example.wxy.watertest10.Bean.BaseActivity;
 import com.example.wxy.watertest10.Bean.PunchClockBean;
 import com.example.wxy.watertest10.Bean.PunchClockSimpleBean;
 import com.example.wxy.watertest10.R;
 import com.example.wxy.watertest10.presenter.PunchClockAdapter;
+import com.loopj.android.http.Base64;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.litepal.LitePal;
 import org.litepal.crud.DataSupport;
 
 import android.text.format.Time;
+import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PunchClockActivity extends BaseActivity implements View.OnClickListener {
@@ -31,7 +48,23 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
     Button punch_btn;
     int PUNCH_TYPE = 0;//0未上班打卡，1未下班打卡 ，2以下班
     String today;
+    String Begin_time, End_time;
     RecyclerView recyclerView;
+
+    public static final int SHOW_RESPONSE=1;
+    public Handler handler=new Handler() {
+        public void handleMessage(Message msg)
+        {
+            switch (msg.what){
+                case SHOW_RESPONSE:
+                    String response=(String)msg.obj;
+                    Toast.makeText(PunchClockActivity.this, "打卡完成", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +100,7 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
     }
 
     public void initDate() {
-        mPunchClockSilmpeList.clear();
+        /*mPunchClockSilmpeList.clear();
         PunchClockSimpleBean a1 = new PunchClockSimpleBean("9:50", "上班", "迟到", "2017-12-18");
         mPunchClockSilmpeList.add(a1);
         PunchClockSimpleBean b1 = new PunchClockSimpleBean("16:30", "下班", "正常", "2017-12-18");
@@ -75,7 +108,7 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
         PunchClockSimpleBean a = new PunchClockSimpleBean("9:00", "上班", "正常", "2017-12-19");
         mPunchClockSilmpeList.add(a);
         PunchClockSimpleBean b = new PunchClockSimpleBean("13:45", "下班", "早退", "2017-12-19");
-        mPunchClockSilmpeList.add(b);
+        mPunchClockSilmpeList.add(b);*/
         List<PunchClockBean> punchClockBeanList = DataSupport.findAll(PunchClockBean.class);
         for(PunchClockBean punchClockBean:punchClockBeanList){
             PunchClockSimpleBean x1 = new PunchClockSimpleBean(punchClockBean.getToWorkTime(), "上班", punchClockBean.getToWorkType(),punchClockBean.getData());
@@ -123,6 +156,7 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
                     minutestr = "0" + hour;
                 }
                 punchClockBean.setToWorkTime(hourstr + ":" + minutestr);
+                Begin_time = hourstr + ":" + minutestr;
                 if (hour > 9) {
                     punchClockBean.setToWorkType("迟到");
                 } else {
@@ -157,6 +191,8 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
                     minutestr2 = "0" + hour2;
                 }
                 punchClockBean2.setGetOffTime(hourstr2 + ":" + minutestr2);
+                End_time = hourstr2 + ":" + minutestr2;
+                SendByHttpClient(Begin_time,End_time);
                 if (hour2 > 17 && minute2 > 30) {
                     punchClockBean2.setGetOffType("正常");
                 } else {
@@ -166,8 +202,55 @@ public class PunchClockActivity extends BaseActivity implements View.OnClickList
                 initDate();
                 PunchClockAdapter adapter2 = new PunchClockAdapter(mPunchClockSilmpeList);
                 recyclerView.setAdapter(adapter2);
+
                 break;
             default:
         }
+    }
+    public void SendByHttpClient(final String Begin, final String End){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    HttpClient httpclient=new DefaultHttpClient();
+                    HttpPost httpPost=new HttpPost("http://120.55.47.216:8060/ideaWater02/RecordController/insertRecord.do");
+
+                    String temp_str="";
+                    Date dt = new Date();
+                    //最后的aa表示“上午”或“下午”    HH表示24小时制    如果换成hh表示12小时制
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    temp_str=sdf.format(dt);
+
+
+
+                    List<NameValuePair> params=new ArrayList<NameValuePair>();
+                    //params.add(new BasicNameValuePair("str",photo));
+
+
+                    params.add(new BasicNameValuePair("workHour",Begin));
+                    params.add(new BasicNameValuePair("offHour",End));
+                    params.add(new BasicNameValuePair("username","wangzi"));
+                    params.add(new BasicNameValuePair("dateTime",temp_str));
+
+
+
+                    final UrlEncodedFormEntity entity=new UrlEncodedFormEntity(params,"utf-8");
+                    httpPost.setEntity(entity);
+                    HttpResponse httpResponse= httpclient.execute(httpPost);
+                    if(httpResponse.getStatusLine().getStatusCode()==200)
+                    {
+                        HttpEntity entity1=httpResponse.getEntity();
+                        String response= EntityUtils.toString(entity1, "utf-8");
+                        Message message=new Message();
+                        message.what=SHOW_RESPONSE;
+                        message.obj=response;
+                        handler.sendMessage(message);
+                    }
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }
